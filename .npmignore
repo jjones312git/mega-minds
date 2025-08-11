@@ -1,0 +1,38 @@
+# Development files
+FOLDER_STRUCTURE.md
+folder_structure.md
+mega-minds.txt
+eslint.config.mjs
+.eslintrc.*
+
+# Common excludes for dev packages
+*.log
+.DS_Store
+.env
+.env.*
+
+# Development dependencies
+node_modules/
+coverage/
+.nyc_output/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git files
+.git/
+.gitignore
+
+# Testing
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Documentation that's not needed
+docs/
+README.dev.md
+CONTRIBUTING.md
