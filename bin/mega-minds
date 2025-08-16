@@ -1,12 +1,56 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const MegaMindsInstaller = require('../lib/installer.js');
-const AIDevTeam = require('../lib/core/AIDevTeam');
+const fs = require('fs');
+
+// Check if we're running from node_modules or in development
+const isInstalledPackage = __dirname.includes('node_modules');
+const projectPath = process.cwd();
+
+// Dynamically resolve paths based on installation context
+let MegaMindsInstaller, AIDevTeam;
+
+if (isInstalledPackage) {
+    // Running from installed package
+    MegaMindsInstaller = require('../lib/installer.js');
+    AIDevTeam = require('../lib/core/AIDevTeam');
+} else {
+    // Running in development
+    MegaMindsInstaller = require('../lib/installer.js');
+    AIDevTeam = require('../lib/core/AIDevTeam');
+}
+
+// Validate that mega-minds is properly installed as a dependency
+function validateInstallation() {
+    if (isInstalledPackage) {
+        const packageJsonPath = path.join(projectPath, 'package.json');
+        if (fs.existsSync(packageJsonPath)) {
+            try {
+                const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+                const hasDependency = 
+                    (packageJson.dependencies && packageJson.dependencies['mega-minds']) ||
+                    (packageJson.devDependencies && packageJson.devDependencies['mega-minds']);
+                
+                if (!hasDependency) {
+                    console.log('⚠️  Warning: mega-minds is not in your package.json dependencies');
+                    console.log('   Run "npm install mega-minds --save" to add it properly');
+                    console.log('');
+                }
+            } catch (error) {
+                // Ignore validation errors silently
+            }
+        }
+    }
+}
 
 async function main() {
     const command = process.argv[2];
-    const projectPath = process.cwd();
+    const args = process.argv.slice(3);
+    
+    // Validate installation for all commands except init
+    if (command !== 'init') {
+        validateInstallation();
+    }
 
     try {
         switch (command) {
@@ -22,6 +66,8 @@ async function main() {
                 console.log('   3. Begin development with intelligent agent coordination');
                 console.log('\n💡 Available commands:');
                 console.log('   mega-minds agent-status     - See agent activity');
+                console.log('   mega-minds memory-status    - Check memory usage');
+                console.log('   mega-minds memory-cleanup   - Force memory cleanup');
                 console.log('   mega-minds save-session     - Save current session');
                 console.log('   mega-minds compress-context - Optimize memory usage');
                 break;
@@ -45,72 +91,147 @@ async function main() {
                 console.log(`   Last session: ${status.memoryStats.lastSession || 'none'}`);
                 break;
 
-            case 'save-session':
-                const description = process.argv.slice(3).join(' ') || 'Development session';
+            // NEW: Memory status command
+            case 'memory-status':
                 const team2 = new AIDevTeam(projectPath);
-                const sessionFile = await team2.saveSession(description);
-                console.log(`💾 Session saved: ${path.basename(sessionFile)}`);
+                await team2.initialize();
+
+                // Get memory status from SessionManager
+                const memStatus = team2.sessions.getMemoryStatus();
+
+                console.log('🧠 Memory Status Report');
+                console.log('========================');
+                console.log(`System Memory: ${memStatus.system.heapUsedMB}MB (${memStatus.system.status})`);
+                console.log(`Warning Threshold: ${memStatus.system.warningThreshold}MB`);
+                console.log(`Critical Threshold: ${memStatus.system.criticalThreshold}MB`);
+
+                if (memStatus.session) {
+                    console.log(`\nActive Session: ${memStatus.session.id}`);
+                    console.log(`Handoffs: ${memStatus.session.handoffs}`);
+                    console.log(`Work Items: ${memStatus.session.workItems}`);
+                } else {
+                    console.log('\nNo active session');
+                }
+
+                console.log(`\nLast Cleanup: ${memStatus.cleanup.lastCleanup}`);
+                console.log(`Auto-save: ${memStatus.cleanup.nextAutoSave}`);
+
+                // Provide recommendations
+                if (memStatus.system.status === 'critical') {
+                    console.log('\n🚨 CRITICAL: Memory usage is dangerous - save session and restart Claude Code');
+                } else if (memStatus.system.status === 'warning') {
+                    console.log('\n⚠️ WARNING: Memory usage is high - consider saving session');
+                } else {
+                    console.log('\n✅ Memory usage is healthy');
+                }
+                break;
+
+            // NEW: Memory cleanup command
+            case 'memory-cleanup':
+                const team3 = new AIDevTeam(projectPath);
+                await team3.initialize();
+
+                console.log('🧹 Forcing memory cleanup...');
+                await team3.sessions.forceMemoryCleanup();
+
+                // Force garbage collection if available
+                if (global.gc) {
+                    global.gc();
+                    console.log('🗑️ Garbage collection completed');
+                }
+
+                // Show new status
+                const newStatus = team3.sessions.getMemoryStatus();
+                console.log(`✅ Cleanup complete. Memory: ${newStatus.system.heapUsedMB}MB (${newStatus.system.status})`);
+                break;
+
+            case 'save-session':
+                const sessionDescription = args.join(' ') || 'Manual session save';
+                const team4 = new AIDevTeam(projectPath);
+                await team4.initialize();
+
+                console.log(`💾 Saving session: "${sessionDescription}"`);
+                await team4.sessions.saveActiveSession();
+                console.log('✅ Session saved successfully');
+
+                // Show memory status after save
+                const postSaveStatus = team4.sessions.getMemoryStatus();
+                console.log(`📊 Memory after save: ${postSaveStatus.system.heapUsedMB}MB (${postSaveStatus.system.status})`);
                 break;
 
             case 'load-session':
-                const team3 = new AIDevTeam(projectPath);
-                const session = await team3.memory.loadLatestSession();
-                if (session) {
-                    console.log(`📂 Latest session: ${session.description}`);
-                    console.log(`   Completed: ${session.timestamp}`);
-                    if (session.work.completed) {
-                        console.log('   Work completed:');
-                        session.work.completed.forEach(work => console.log(`     - ${work}`));
+                const team5 = new AIDevTeam(projectPath);
+                const sessionInfo = await team5.loadLatestSession();
+                if (sessionInfo) {
+                    console.log('\n📂 Latest Session:');
+                    console.log(`   ID: ${sessionInfo.sessionId}`);
+                    console.log(`   Description: ${sessionInfo.description}`);
+                    console.log(`   Started: ${sessionInfo.startTime}`);
+                    console.log(`   Last Update: ${sessionInfo.lastUpdate}`);
+
+                    if (sessionInfo.workflow) {
+                        console.log(`   Phase: ${sessionInfo.workflow.currentPhase}`);
+                        console.log(`   Active Agents: ${sessionInfo.agents.activeCount}`);
                     }
                 } else {
-                    console.log('📂 No previous sessions found');
+                    console.log('📂 No saved sessions found');
                 }
                 break;
 
             case 'compress-context':
-                const team4 = new AIDevTeam(projectPath);
-                const compressed = await team4.compressContext();
-                console.log(`🗜️ Context optimized for Claude Code`);
+                const team6 = new AIDevTeam(projectPath);
+                await team6.initialize();
+
+                console.log('🗜️ Compressing context for Claude Code...');
+                // This would typically be called automatically, but we can force it
+                const context = await team6.loadProjectContext();
+                const optimized = await team6.tokens.manageContext(context, 'Manual compression request');
+
+                if (optimized.compressed) {
+                    console.log(`✅ Context compressed: ${optimized.tokenCount} tokens`);
+                    if (optimized.emergency) {
+                        console.log('⚠️ Emergency compression was applied due to high memory usage');
+                    }
+                } else {
+                    console.log(`✅ Context already optimized: ${optimized.tokenCount} tokens`);
+                }
                 break;
 
             case 'update-memory':
-                const updateDescription = process.argv.slice(3).join(' ');
-                if (!updateDescription) {
-                    console.log('Usage: mega-minds update-memory "description of what happened"');
-                    return;
+                const memoryUpdate = args.join(' ');
+                if (!memoryUpdate) {
+                    console.log('❌ Please provide a description: mega-minds update-memory "what happened"');
+                    break;
                 }
-                const team5 = new AIDevTeam(projectPath);
-                await team5.updateMemory(updateDescription);
-                console.log('📝 Project memory updated');
+
+                const team7 = new AIDevTeam(projectPath);
+                await team7.initialize();
+                await team7.updateProjectMemory({ description: memoryUpdate });
+                console.log(`✅ Memory updated: "${memoryUpdate}"`);
                 break;
 
             case 'chat':
-                const userRequest = process.argv.slice(3).join(' ');
+                const userRequest = args.join(' ');
                 if (!userRequest) {
-                    console.log('Usage: mega-minds chat "your request here"');
-                    return;
+                    console.log('❌ Please provide a request: mega-minds chat "your request here"');
+                    break;
                 }
 
-                console.log('🧠 Analyzing request and preparing agent coordination...');
-                const team6 = new AIDevTeam(projectPath);
-                const result = await team6.handleRequest(userRequest);
+                const team8 = new AIDevTeam(projectPath);
+                console.log(`🎯 Processing: "${userRequest}"`);
+                const result = await team8.handleRequest(userRequest);
 
-                console.log('\n🎯 Agent Coordination Plan:');
-                if (result.type === 'single-agent') {
-                    console.log(`   Primary agent: ${result.primaryAgent}`);
-                    console.log('\n📋 Instructions for Claude Code:');
-                    console.log(result.instructions);
-                } else {
-                    console.log('   Multi-agent workflow:');
-                    result.workflow.forEach(step => {
-                        console.log(`   ${step.step}. ${step.agent}${step.nextAgent ? ` → ${step.nextAgent}` : ''}`);
+                if (result.workflow) {
+                    console.log('\n📋 Recommended workflow:');
+                    result.workflow.steps.forEach((step, i) => {
+                        console.log(`   ${i + 1}. ${step.agent}${step.nextAgent ? ` → ${step.nextAgent}` : ''}`);
                     });
                 }
                 break;
 
             case 'stats':
-                const team7 = new AIDevTeam(projectPath);
-                const stats = await team7.getAgentStatus();
+                const team9 = new AIDevTeam(projectPath);
+                const stats = await team9.getAgentStatus();
                 console.log('\n📊 Project Statistics:');
                 console.log(`   Project path: ${stats.projectPath}`);
                 console.log(`   Total development sessions: ${stats.memoryStats.totalSessions}`);
@@ -118,12 +239,20 @@ async function main() {
                 console.log(`   Memory files: ${stats.memoryStats.memoryFiles}`);
                 break;
 
+            case 'verify':
+                const { verifyInstallation } = require('../lib/verify-installation');
+                verifyInstallation();
+                break;
+
             default:
                 console.log('🤖 mega-minds AI Development Team');
                 console.log('\nUsage:');
                 console.log('  mega-minds init                    - Initialize AI dev team in current folder');
+                console.log('  mega-minds verify                  - Verify installation integrity');
                 console.log('  mega-minds chat "request"          - Get agent coordination for a request');
                 console.log('  mega-minds agent-status            - See current agent activity');
+                console.log('  mega-minds memory-status           - Check memory usage and health');
+                console.log('  mega-minds memory-cleanup          - Force memory cleanup and GC');
                 console.log('  mega-minds save-session "desc"     - Save current development session');
                 console.log('  mega-minds load-session            - View latest session info');
                 console.log('  mega-minds compress-context        - Optimize memory for Claude Code');
@@ -134,6 +263,11 @@ async function main() {
                 console.log('  2. Start Claude Code (it will read CLAUDE.md automatically)');
                 console.log('  3. Claude Code can use mega-minds commands for memory management');
                 console.log('  4. Agents coordinate automatically based on your requests');
+                console.log('\n🧠 Memory Management:');
+                console.log('  - Use "memory-status" to check memory health');
+                console.log('  - Use "memory-cleanup" if Claude Code becomes slow');
+                console.log('  - Use "save-session" before memory gets critical');
+                console.log('  - Restart Claude Code if memory stays above 3.5GB');
         }
     } catch (error) {
         console.error('❌ Error:', error.message);

@@ -13,7 +13,7 @@ MegaMinds creates an intelligent development ecosystem where:
 
 ## Key Features
 
-### 🤖 40+ Specialized Agents
+### 🤖 30+ Specialized Agents
 - **Planning & Strategy**: Project orchestration, requirements analysis, risk assessment
 - **Design & Architecture**: UX/UI design, database schemas, API design, security architecture
 - **Development**: Frontend, backend, database, authentication implementations
@@ -47,23 +47,52 @@ MegaMinds creates an intelligent development ecosystem where:
 - npm or yarn package manager
 - Claude Code (for AI agent execution)
 
-### Global Installation (Recommended)
+### Installation Methods
+
+#### Method 1: Global Installation (Recommended)
 
 ```bash
+# Install globally
 npm install -g mega-minds
+
+# Navigate to your project
+cd your-project
+
+# Initialize mega-minds
+mega-minds init
 ```
 
-Or with yarn:
+This will:
+1. Create `.claude/` directory with agents and workflows
+2. Add mega-minds to your package.json dependencies
+3. Install the dependency automatically
+
+#### Method 2: Project-Specific Installation
 
 ```bash
-yarn global add mega-minds
+# Install as project dependency
+cd your-project
+npm install mega-minds --save
+
+# Initialize the agents
+npx mega-minds init
 ```
 
-### Local Installation
+### How It Works
 
-```bash
-npm install mega-minds
-```
+MegaMinds operates in two parts:
+
+1. **Agent Templates** (`.claude/` directory):
+   - Sub-agent markdown files for Claude Code
+   - Workflow definitions and protocols
+   - Main configuration file (claude.md)
+
+2. **Core Functionality** (`node_modules/mega-minds/`):
+   - SessionManager for development sessions
+   - TokenManager for context optimization
+   - MemoryManager for project memory
+   - AgentStateTracker for coordination
+   - CLI tools for management
 
 ## Getting Started
 
@@ -76,14 +105,29 @@ mega-minds init
 ```
 
 This will:
-- Create a `.mega-minds/` directory for memory and state management
-- Generate a `CLAUDE.md` file that Claude Code will automatically read
-- Set up agent templates and workflow configurations
+- Create a `.claude/` directory with all agent templates
+- Generate a `claude.md` file that Claude Code will automatically read
+- Add mega-minds to your package.json as a dependency
+- Set up workflow configurations and protocols
 - Initialize the memory management system
+
+**Post-Installation Structure:**
+```
+your-project/
+├── .claude/
+│   ├── agents/          # Claude Code sub-agents
+│   ├── workflows/       # Communication protocols
+│   └── claude.md        # Main configuration
+├── node_modules/
+│   └── mega-minds/      # Core AI team functionality
+└── package.json         # Updated with mega-minds dependency
+```
 
 ### 2. Start Claude Code
 
-Open Claude Code in your project directory. It will automatically read the `CLAUDE.md` file and have access to all MegaMinds capabilities.
+Open Claude Code in your project directory. It will automatically read the `.claude/claude.md` file and have access to all MegaMinds capabilities.
+
+**Important:** The mega-minds package must remain installed as a dependency for the memory management and coordination features to work properly.
 
 ### 3. Begin Development
 
@@ -104,16 +148,22 @@ The AI development team will:
 
 ## Available Commands
 
-### Project Management
+### Initialization
 - `mega-minds init` - Initialize MegaMinds in your project
-- `mega-minds agent-status` - View current agent activities
-- `mega-minds save-session "description"` - Save current development state
-- `mega-minds load-session` - Restore previous session
-- `mega-minds compress-context` - Optimize memory when approaching limits
 
-### Memory Management
-- `mega-minds update-memory "what happened"` - Update project documentation
-- `mega-minds clear-memory` - Reset memory (use with caution)
+### Project Management (use with `npx` after installation)
+- `npx mega-minds agent-status` - View current agent activities
+- `npx mega-minds save-session "description"` - Save current development state
+- `npx mega-minds load-session` - Restore previous session
+- `npx mega-minds stats` - Show project statistics
+
+### Memory Management (use with `npx` after installation)
+- `npx mega-minds memory-status` - Check memory health and usage
+- `npx mega-minds memory-cleanup` - Force memory cleanup and garbage collection
+- `npx mega-minds compress-context` - Optimize memory when approaching limits
+- `npx mega-minds update-memory "what happened"` - Update project documentation
+
+**Note:** After installation, use `npx mega-minds` to run commands, ensuring you're using the project-specific version.
 
 ## How It Works
 

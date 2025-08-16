@@ -1,18 +1,27 @@
 
-# [YOUR_PROJECT_NAME] - AI Development Team Memory
+# [PROJECT_NAME] - AI Development Team Memory
 
-@import .mega-minds/memory/architecture.md
-@import .mega-minds/memory/recent-work.md
-@import .mega-minds/agents/active-context.md
+## IMPORTANT: Mega Minds Integration
+
+**This project uses the mega-minds NPM package for AI team coordination.**
+
+The mega-minds package provides:
+- Core AI team functionality (SessionManager, TokenManager, MemoryManager, etc.)
+- Command-line tools for memory and session management
+- Agent coordination and state tracking
+
+These core files are located in: `node_modules/mega-minds/lib/`
 
 ## Memory Management Commands
 
 **For Claude Code - Use these commands when needed:**
-- `mega-minds compress-context` - When approaching token limits
-- `mega-minds save-session "description"` - Save current development session
-- `mega-minds load-session` - Load previous session state
-- `mega-minds agent-status` - See what agents are working on
-- `mega-minds update-memory "what happened"` - Update project memory
+- `npx mega-minds compress-context` - When approaching token limits
+- `npx mega-minds save-session "description"` - Save current development session
+- `npx mega-minds load-session` - Load previous session state
+- `npx mega-minds agent-status` - See what agents are working on
+- `npx mega-minds update-memory "what happened"` - Update project memory
+- `npx mega-minds memory-status` - Check memory health
+- `npx mega-minds memory-cleanup` - Force memory cleanup
 
 ## Project Overview
 
