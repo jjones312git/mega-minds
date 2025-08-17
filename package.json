@@ -1,6 +1,6 @@
 {
     "name": "mega-minds",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Installs multi-agent workflow system for Claude Code projects",
     "main": "lib/installer.js",
     "bin": {
