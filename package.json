@@ -1,20 +1,29 @@
 {
     "name": "mega-minds",
-    "version": "1.0.4",
-    "description": "Installs multi-agent workflow system for Claude Code projects",
+    "version": "1.1.0",
+    "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management",
     "main": "lib/installer.js",
     "bin": {
         "mega-minds": "./bin/mega-minds"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "test:unit": "jest tests/unit",
+        "test:integration": "jest tests/integration"
     },
     "keywords": [
         "claude",
         "agents",
         "workflow",
         "development",
-        "ai"
+        "ai",
+        "handoff",
+        "automation",
+        "task-management",
+        "coordination",
+        "validation"
     ],
     "author": "Jesse Jones",
     "license": "MIT",
@@ -25,6 +34,7 @@
     "devDependencies": {
         "@eslint/js": "^9.33.0",
         "eslint": "^9.33.0",
-        "globals": "^16.3.0"
+        "globals": "^16.3.0",
+        "jest": "^29.7.0"
     }
 }
