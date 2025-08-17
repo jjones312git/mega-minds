@@ -55,6 +55,9 @@ MegaMinds creates an intelligent development ecosystem where:
 # Install globally
 npm install -g mega-minds
 
+# Install to project
+npm install mega-minds
+
 # Navigate to your project
 cd your-project
 
