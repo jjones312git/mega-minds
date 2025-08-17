@@ -27,6 +27,17 @@
     ],
     "author": "Jesse Jones",
     "license": "MIT",
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/mega-minds.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/mega-minds/issues"
+    },
+    "homepage": "https://github.com/yourusername/mega-minds#readme",
     "dependencies": {
         "fs-extra": "^11.1.1",
         "inquirer": "^8.2.6"
