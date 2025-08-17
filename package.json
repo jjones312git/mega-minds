@@ -32,12 +32,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/mega-minds.git"
+        "url": "https://github.com/jjones312git/mega-minds.git"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/mega-minds/issues"
+        "url": "https://github.com/jjones312git/mega-minds/issues"
     },
-    "homepage": "https://github.com/yourusername/mega-minds#readme",
+    "homepage": "https://github.com/jjones312git/mega-minds#readme",
     "dependencies": {
         "fs-extra": "^11.1.1",
         "inquirer": "^8.2.6"
