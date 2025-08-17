@@ -161,7 +161,7 @@ async function main() {
 
             case 'load-session':
                 const team5 = new AIDevTeam(projectPath);
-                const sessionInfo = await team5.loadLatestSession();
+                const sessionInfo = await team5.memory.loadLatestSession();
                 if (sessionInfo) {
                     console.log('\n📂 Latest Session:');
                     console.log(`   ID: ${sessionInfo.sessionId}`);
