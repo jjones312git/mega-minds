@@ -151,6 +151,12 @@ async function main() {
                 await team4.initialize();
 
                 console.log(`💾 Saving session: "${sessionDescription}"`);
+                
+                // Update session description before saving
+                if (team4.sessions.currentSession) {
+                    team4.sessions.currentSession.description = sessionDescription;
+                }
+                
                 await team4.sessions.saveActiveSession();
                 console.log('✅ Session saved successfully');
 
