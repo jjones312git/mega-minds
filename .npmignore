@@ -37,3 +37,10 @@ jest.config.js
 docs/
 README.dev.md
 CONTRIBUTING.md
+
+# Claude Code specific directories (local development only)
+.claude/
+.mega-minds/
+
+# Development/testing directories
+test-session/
