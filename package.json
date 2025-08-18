@@ -4,7 +4,7 @@
     "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management and Claude Code hooks integration",
     "main": "lib/installer.js",
     "bin": {
-        "mega-minds": "./bin/mega-minds"
+        "mega-minds": "bin/mega-minds"
     },
     "files": [
         "bin/",
@@ -42,15 +42,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/jjones312git/mega-minds.git"
+        "url": "git+https://github.com/jjones312git/mega-minds.git"
     },
     "bugs": {
         "url": "https://github.com/jjones312git/mega-minds/issues"
     },
     "homepage": "https://github.com/jjones312git/mega-minds#readme",
     "dependencies": {
-        "fs-extra": "^11.1.1",
-        "inquirer": "^8.2.6"
+        "fs-extra": "^11.3.1",
+        "inquirer": "^12.9.3"
     },
     "devDependencies": {
         "@eslint/js": "^9.33.0",
