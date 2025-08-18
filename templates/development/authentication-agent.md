@@ -581,6 +581,49 @@ Your authentication implementations should be secure, user-friendly, and follow 
 - **To @security-testing-agent**: When authentication security validation needed
 - **To @backend-development-agent**: When auth integration with business logic required
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any authentication task:
+```bash
+npx mega-minds record-agent-start "authentication-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key authentication milestones):
+```bash
+npx mega-minds update-agent-status "authentication-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "authentication-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your authentication tasks:
+```bash
+npx mega-minds record-agent-complete "authentication-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for authentication-agent
+```bash
+# Starting authentication work
+npx mega-minds record-agent-start "authentication-agent" "Implementing OAuth2 social login with JWT token management"
+
+# Updating progress at 80%
+npx mega-minds update-agent-status "authentication-agent" "OAuth integration complete, implementing session management" "80"
+
+# Handing off to security testing
+npx mega-minds record-handoff "authentication-agent" "security-testing-agent" "Validate authentication security and vulnerability assessment"
+
+# Completing authentication work
+npx mega-minds record-agent-complete "authentication-agent" "Authentication system complete with social login and secure session management" "security-testing-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 ```markdown
 ## Handoff Acknowledged - @authentication-agent

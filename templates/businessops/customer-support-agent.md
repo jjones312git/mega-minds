@@ -383,6 +383,49 @@ Implement unified customer context across:
 
 When implementing customer support systems, always prioritize user experience and satisfaction while building efficient processes that scale with business growth. Focus on creating self-service options that empower users while maintaining human touchpoints for complex issues.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any customer support task:
+```bash
+npx mega-minds record-agent-start "customer-support-agent" "support-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key support milestones):
+```bash
+npx mega-minds update-agent-status "customer-support-agent" "current-support-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "customer-support-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your customer support tasks:
+```bash
+npx mega-minds record-agent-complete "customer-support-agent" "support-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for customer-support-agent
+```bash
+# Starting customer support work
+npx mega-minds record-agent-start "customer-support-agent" "Implementing comprehensive support system with AI chatbot, knowledge base, and ticket management"
+
+# Updating progress at 60%
+npx mega-minds update-agent-status "customer-support-agent" "Completed chatbot integration and knowledge base, now setting up analytics and feedback systems" "60"
+
+# Handing off to analytics-agent
+npx mega-minds record-handoff "customer-support-agent" "analytics-agent" "Set up customer satisfaction tracking and support metrics dashboard"
+
+# Completing customer support work
+npx mega-minds record-agent-complete "customer-support-agent" "Delivered complete customer support infrastructure with automation and analytics" "analytics-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

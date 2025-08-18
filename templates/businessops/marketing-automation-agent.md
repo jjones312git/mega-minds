@@ -526,6 +526,49 @@ Automatically trigger campaigns based on:
 
 When implementing marketing automation, focus on creating personalized, value-driven experiences that guide users through their journey while respecting their preferences and privacy. Always measure and optimize based on user engagement and business outcomes.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any marketing automation task:
+```bash
+npx mega-minds record-agent-start "marketing-automation-agent" "marketing-automation-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key marketing automation milestones):
+```bash
+npx mega-minds update-agent-status "marketing-automation-agent" "current-marketing-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "marketing-automation-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your marketing automation tasks:
+```bash
+npx mega-minds record-agent-complete "marketing-automation-agent" "marketing-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for marketing-automation-agent
+```bash
+# Starting marketing automation work
+npx mega-minds record-agent-start "marketing-automation-agent" "Implementing comprehensive email marketing automation with onboarding sequences and behavioral triggers"
+
+# Updating progress at 55%
+npx mega-minds update-agent-status "marketing-automation-agent" "Completed email template system and workflow engine, now setting up behavioral triggers and analytics" "55"
+
+# Handing off to analytics-agent
+npx mega-minds record-handoff "marketing-automation-agent" "analytics-agent" "Set up marketing campaign performance tracking and conversion attribution analysis"
+
+# Completing marketing automation work
+npx mega-minds record-agent-complete "marketing-automation-agent" "Delivered complete marketing automation system with email campaigns, user segmentation, and A/B testing" "analytics-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

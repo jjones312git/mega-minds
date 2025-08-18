@@ -70,6 +70,14 @@ async function main() {
                 console.log('   mega-minds memory-cleanup   - Force memory cleanup');
                 console.log('   mega-minds save-session     - Save current session');
                 console.log('   mega-minds compress-context - Optimize memory usage');
+                console.log('\n🔄 New Handoff Commands (v2.0):');
+                console.log('   mega-minds record-agent-start    - Record agent activation');
+                console.log('   mega-minds record-agent-complete - Record agent completion');
+                console.log('   mega-minds record-handoff        - Record explicit handoff');
+                console.log('   mega-minds update-agent-status   - Update agent progress');
+                console.log('\n🛡️ Quality Gate Commands (v2.0):');
+                console.log('   mega-minds run-quality-gates     - Run automated quality checks');
+                console.log('   mega-minds quality-status        - Show quality metrics');
                 break;
 
             case 'agent-status':
@@ -275,6 +283,294 @@ async function main() {
                 verifyInstallation();
                 break;
 
+            // New v2.0 Handoff Commands
+            case 'record-agent-start':
+                const { recordAgentStart } = require('../lib/commands/record-agent-start');
+                if (args.length < 2) {
+                    console.error('❌ Usage: mega-minds record-agent-start "agent-name" "task-description"');
+                    process.exit(1);
+                }
+                await recordAgentStart(args[0], args.slice(1).join(' '));
+                break;
+
+            case 'record-agent-complete':
+                const { recordAgentComplete } = require('../lib/commands/record-agent-complete');
+                if (args.length < 2) {
+                    console.error('❌ Usage: mega-minds record-agent-complete "agent-name" "completion-summary" ["next-agent"]');
+                    process.exit(1);
+                }
+                await recordAgentComplete(args[0], args[1], args[2]);
+                break;
+
+            case 'record-handoff':
+                const { recordHandoff } = require('../lib/commands/record-handoff');
+                if (args.length < 3) {
+                    console.error('❌ Usage: mega-minds record-handoff "from-agent" "to-agent" "task-description"');
+                    process.exit(1);
+                }
+                await recordHandoff(args[0], args[1], args.slice(2).join(' '));
+                break;
+
+            case 'update-agent-status':
+                const { updateAgentStatus } = require('../lib/commands/update-agent-status');
+                if (args.length < 2) {
+                    console.error('❌ Usage: mega-minds update-agent-status "agent-name" "status-description" [progress-percentage]');
+                    process.exit(1);
+                }
+                await updateAgentStatus(args[0], args[1], args[2]);
+                break;
+
+            // MEGA-MINDS 2.0: Quality Gate Commands
+            case 'run-quality-gates':
+                const { runQualityGates } = require('../lib/commands/run-quality-gates');
+                const gateOptions = {
+                    gates: args.find(arg => arg.startsWith('--gates='))?.replace('--gates=', ''),
+                    dryRun: args.includes('--dry-run'),
+                    fix: args.includes('--fix'),
+                    verbose: args.includes('--verbose')
+                };
+                await runQualityGates(gateOptions);
+                break;
+
+            case 'quality-status':
+                const { getQualityStatus } = require('../lib/commands/run-quality-gates');
+                await getQualityStatus();
+                break;
+
+            // MEGA-MINDS 2.0: Dashboard Commands (Phase 3.1)
+            case 'dashboard':
+                const subCommand = args[0];
+                const dashboardCommands = require('../lib/commands/dashboard');
+                
+                switch (subCommand) {
+                    case 'start':
+                        const portArg = args.find(arg => arg.startsWith('--port='));
+                        const port = portArg ? parseInt(portArg.replace('--port=', '')) : 3001;
+                        await dashboardCommands.startDashboard({ port });
+                        break;
+                    case 'status':
+                        await dashboardCommands.getDashboardStatus();
+                        break;
+                    case 'open':
+                        await dashboardCommands.openDashboard();
+                        break;
+                    case 'stop':
+                        await dashboardCommands.stopDashboard();
+                        break;
+                    default:
+                        dashboardCommands.showDashboardHelp();
+                        break;
+                }
+                break;
+
+            // MEGA-MINDS 2.0: Multi-Project Management Commands (Phase 3.2)
+            case 'enable-multi-project':
+                const { enableMultiProject } = require('../lib/commands/project-management');
+                await enableMultiProject();
+                break;
+
+            case 'disable-multi-project':
+                const { disableMultiProject } = require('../lib/commands/project-management');
+                await disableMultiProject();
+                break;
+
+            case 'project':
+                const projectSubCommand = args[0];
+                const projectCommands = require('../lib/commands/project-management');
+                
+                switch (projectSubCommand) {
+                    case 'add':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project add <path> [--name=<name>] [--description=<desc>]');
+                            process.exit(1);
+                        }
+                        const addOptions = {};
+                        args.slice(2).forEach(arg => {
+                            if (arg.startsWith('--name=')) addOptions.name = arg.replace('--name=', '');
+                            if (arg.startsWith('--description=')) addOptions.description = arg.replace('--description=', '');
+                            if (arg.startsWith('--tags=')) addOptions.tags = arg.replace('--tags=', '');
+                        });
+                        await projectCommands.addProject(args[1], addOptions);
+                        break;
+                    case 'list':
+                        const listOptions = {};
+                        args.slice(2).forEach(arg => {
+                            if (arg.startsWith('--status=')) listOptions.status = arg.replace('--status=', '');
+                        });
+                        await projectCommands.listProjects(listOptions);
+                        break;
+                    case 'switch':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project switch <id>');
+                            process.exit(1);
+                        }
+                        await projectCommands.switchProject(args[1]);
+                        break;
+                    case 'status':
+                        await projectCommands.showProjectStatus();
+                        break;
+                    case 'health':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project health <id>');
+                            process.exit(1);
+                        }
+                        await projectCommands.checkProjectHealth(args[1]);
+                        break;
+                    case 'archive':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project archive <id>');
+                            process.exit(1);
+                        }
+                        await projectCommands.archiveProject(args[1]);
+                        break;
+                    case 'restore':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project restore <id>');
+                            process.exit(1);
+                        }
+                        await projectCommands.restoreProject(args[1]);
+                        break;
+                    case 'remove':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project remove <id>');
+                            process.exit(1);
+                        }
+                        await projectCommands.removeProject(args[1]);
+                        break;
+                    case 'find':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds project find <query>');
+                            process.exit(1);
+                        }
+                        await projectCommands.findProjects(args[1]);
+                        break;
+                    default:
+                        projectCommands.showProjectHelp();
+                        break;
+                }
+                break;
+
+            // MEGA-MINDS 2.0: Enterprise Administration Commands (Phase 3.3)
+            case 'enable-team-collaboration':
+                const { enableTeamCollaboration } = require('../lib/commands/enterprise-admin');
+                await enableTeamCollaboration();
+                break;
+
+            case 'enable-monitoring':
+                const { enableEnterpriseMonitoring } = require('../lib/commands/enterprise-admin');
+                await enableEnterpriseMonitoring();
+                break;
+
+            case 'enable-logging':
+                const { enableStructuredLogging } = require('../lib/commands/enterprise-admin');
+                await enableStructuredLogging();
+                break;
+
+            case 'team':
+                const teamSubCommand = args[0];
+                const enterpriseCommands = require('../lib/commands/enterprise-admin');
+                
+                switch (teamSubCommand) {
+                    case 'add':
+                        if (args.length < 3) {
+                            console.error('❌ Usage: mega-minds team add <userId> <userName> [role]');
+                            process.exit(1);
+                        }
+                        await enterpriseCommands.addTeamMember(args[1], args[2], args[3] || 'collaborator');
+                        break;
+                    case 'list':
+                        await enterpriseCommands.listTeamMembers();
+                        break;
+                    case 'remove':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds team remove <userId>');
+                            process.exit(1);
+                        }
+                        await enterpriseCommands.removeTeamMember(args[1]);
+                        break;
+                    case 'role':
+                        if (args.length < 3) {
+                            console.error('❌ Usage: mega-minds team role <userId> <newRole>');
+                            process.exit(1);
+                        }
+                        await enterpriseCommands.changeTeamMemberRole(args[1], args[2]);
+                        break;
+                    case 'status':
+                        await enterpriseCommands.showTeamStatus();
+                        break;
+                    case 'activity':
+                        const activityOptions = {};
+                        args.slice(1).forEach(arg => {
+                            if (arg.startsWith('--user=')) activityOptions.user = arg.replace('--user=', '');
+                            if (arg.startsWith('--type=')) activityOptions.type = arg.replace('--type=', '');
+                            if (arg.startsWith('--limit=')) activityOptions.limit = parseInt(arg.replace('--limit=', ''));
+                        });
+                        await enterpriseCommands.viewTeamActivity(activityOptions);
+                        break;
+                    default:
+                        enterpriseCommands.showEnterpriseHelp();
+                        break;
+                }
+                break;
+
+            case 'monitoring':
+                const monitoringSubCommand = args[0];
+                const monitoringCommands = require('../lib/commands/enterprise-admin');
+                
+                switch (monitoringSubCommand) {
+                    case 'status':
+                        await monitoringCommands.showMonitoringStatus();
+                        break;
+                    case 'metrics':
+                        await monitoringCommands.showCurrentMetrics();
+                        break;
+                    case 'alerts':
+                        const limit = args[1] ? parseInt(args[1]) : 10;
+                        await monitoringCommands.showRecentAlerts(limit);
+                        break;
+                    case 'health':
+                        await monitoringCommands.showMonitoringStatus(); // Same as status for now
+                        break;
+                    case 'report':
+                        const days = args[1] ? parseInt(args[1]) : 7;
+                        await monitoringCommands.generateAnalyticsReport(days);
+                        break;
+                    default:
+                        monitoringCommands.showEnterpriseHelp();
+                        break;
+                }
+                break;
+
+            case 'logging':
+                const loggingSubCommand = args[0];
+                const loggingCommands = require('../lib/commands/enterprise-admin');
+                
+                switch (loggingSubCommand) {
+                    case 'status':
+                        await loggingCommands.showLoggingStatus();
+                        break;
+                    case 'level':
+                        if (!args[1]) {
+                            console.error('❌ Usage: mega-minds logging level <level>');
+                            console.error('Available levels: emergency, alert, critical, error, warning, notice, info, debug');
+                            process.exit(1);
+                        }
+                        await loggingCommands.setLogLevel(args[1]);
+                        break;
+                    case 'stats':
+                        await loggingCommands.showLoggingStatus(); // Same as status for now
+                        break;
+                    default:
+                        loggingCommands.showEnterpriseHelp();
+                        break;
+                }
+                break;
+
+            case 'enterprise':
+                const { showEnterpriseHelp } = require('../lib/commands/enterprise-admin');
+                showEnterpriseHelp();
+                break;
+
             default:
                 console.log('🤖 mega-minds AI Development Team');
                 console.log('\nUsage:');
@@ -291,6 +587,32 @@ async function main() {
                 console.log('  mega-minds stats                   - Show project statistics');
                 console.log('  mega-minds setup-hooks             - Configure Claude Code hooks');
                 console.log('  mega-minds hook-status             - Check hook configuration');
+                console.log('\n🔄 Agent Handoff Commands (v2.0):');
+                console.log('  mega-minds record-agent-start      - Record agent activation');
+                console.log('  mega-minds record-agent-complete   - Record agent completion');
+                console.log('  mega-minds record-handoff          - Record explicit handoff');
+                console.log('  mega-minds update-agent-status     - Update agent progress');
+                console.log('\n🛡️ Quality Gate Commands (v2.0):');
+                console.log('  mega-minds run-quality-gates       - Run automated quality checks');
+                console.log('  mega-minds quality-status          - Show quality metrics and PRD compliance');
+                console.log('\n📊 Dashboard Commands (v2.0):');
+                console.log('  mega-minds dashboard start          - Start real-time web dashboard');
+                console.log('  mega-minds dashboard status         - Check dashboard status');
+                console.log('  mega-minds dashboard open           - Open dashboard in browser');
+                console.log('  mega-minds dashboard stop           - Show how to stop dashboard');
+                console.log('\n📁 Multi-Project Commands (v2.0):');
+                console.log('  mega-minds enable-multi-project     - Enable multi-project mode');
+                console.log('  mega-minds project list              - List all projects');
+                console.log('  mega-minds project add <path>        - Add project to registry');
+                console.log('  mega-minds project switch <id>       - Switch to project');
+                console.log('  mega-minds project status            - Show current project');
+                console.log('\n🏢 Enterprise Commands (v2.0):');
+                console.log('  mega-minds enable-team-collaboration - Enable team collaboration');
+                console.log('  mega-minds enable-monitoring         - Enable enterprise monitoring');
+                console.log('  mega-minds enable-logging            - Enable structured logging');
+                console.log('  mega-minds team list                 - List team members');
+                console.log('  mega-minds monitoring status         - Show monitoring status');
+                console.log('  mega-minds enterprise                - Show all enterprise commands');
                 console.log('\n💡 Workflow:');
                 console.log('  1. Run "mega-minds init" in your project folder');
                 console.log('  2. Start Claude Code (it will read CLAUDE.md automatically)');

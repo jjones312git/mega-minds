@@ -233,6 +233,49 @@ Your recommendations should be pragmatic yet forward-thinking, balancing ideal a
 - **CONFLICT RESOLUTION** between agents on technical matters
 - **APPROVAL REQUIRED** for major architectural changes by other agents
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any architectural task:
+```bash
+npx mega-minds record-agent-start "technical-architecture-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key architectural milestones):
+```bash
+npx mega-minds update-agent-status "technical-architecture-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "technical-architecture-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your architectural tasks:
+```bash
+npx mega-minds record-agent-complete "technical-architecture-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for technical-architecture-agent
+```bash
+# Starting architectural work
+npx mega-minds record-agent-start "technical-architecture-agent" "Designing scalable e-commerce platform architecture"
+
+# Updating progress at 50%
+npx mega-minds update-agent-status "technical-architecture-agent" "Technology stack evaluation complete, designing system components" "50"
+
+# Handing off to database schema agent
+npx mega-minds record-handoff "technical-architecture-agent" "database-schema-agent" "Design database schema based on architectural decisions"
+
+# Completing architectural work
+npx mega-minds record-agent-complete "technical-architecture-agent" "Architecture design complete with technology stack and system diagrams" "database-schema-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 When receiving architectural work, I MUST respond with:
 ```markdown

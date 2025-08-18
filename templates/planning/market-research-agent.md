@@ -221,4 +221,47 @@ When receiving market research work, I MUST respond with:
 🤖 @market-research-agent ACTIVE - Beginning market research work.
 ```
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any research task:
+```bash
+npx mega-minds record-agent-start "market-research-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key research milestones):
+```bash
+npx mega-minds update-agent-status "market-research-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "market-research-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your research tasks:
+```bash
+npx mega-minds record-agent-complete "market-research-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for market-research-agent
+```bash
+# Starting market research
+npx mega-minds record-agent-start "market-research-agent" "Analyzing competitive landscape for SaaS productivity tools"
+
+# Updating progress at 60%
+npx mega-minds update-agent-status "market-research-agent" "Completed competitor analysis, analyzing market trends" "60"
+
+# Handing off to requirements analysis
+npx mega-minds record-handoff "market-research-agent" "requirements-analysis-agent" "Use market insights to define user requirements"
+
+# Completing research work
+npx mega-minds record-agent-complete "market-research-agent" "Market research complete with competitive analysis and market opportunity assessment" "requirements-analysis-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **VIOLATION PENALTY**: Any product decision-making or technical implementation work by this agent MUST be immediately stopped and handed off to appropriate decision-making or technical agent.

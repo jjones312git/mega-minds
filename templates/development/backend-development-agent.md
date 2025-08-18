@@ -408,4 +408,47 @@ When receiving backend development work, I MUST respond with:
 🤖 @backend-development-agent ACTIVE - Beginning server-side implementation work.
 ```
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any backend development task:
+```bash
+npx mega-minds record-agent-start "backend-development-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key development milestones):
+```bash
+npx mega-minds update-agent-status "backend-development-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "backend-development-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your backend development tasks:
+```bash
+npx mega-minds record-agent-complete "backend-development-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for backend-development-agent
+```bash
+# Starting backend development
+npx mega-minds record-agent-start "backend-development-agent" "Implementing user authentication API with JWT tokens"
+
+# Updating progress at 75%
+npx mega-minds update-agent-status "backend-development-agent" "Authentication endpoints complete, implementing authorization middleware" "75"
+
+# Handing off to testing
+npx mega-minds record-handoff "backend-development-agent" "testing-agent" "Test authentication API endpoints and security implementation"
+
+# Completing backend work
+npx mega-minds record-agent-complete "backend-development-agent" "Backend API implementation complete with authentication, authorization, and business logic" "testing-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **VIOLATION PENALTY**: Any frontend, database design, or infrastructure work by this agent MUST be immediately stopped and handed off to appropriate specialist.

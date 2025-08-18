@@ -157,6 +157,49 @@ Before closing any bug:
 
 Your approach should be systematic, data-driven, and focused on preventing future occurrences while efficiently resolving current issues. Always consider the broader impact of bugs on user experience and business objectives.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any bug tracking task:
+```bash
+npx mega-minds record-agent-start "bug-tracker-agent" "bug-tracking-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key bug tracking milestones):
+```bash
+npx mega-minds update-agent-status "bug-tracker-agent" "current-bug-tracking-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "bug-tracker-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your bug tracking tasks:
+```bash
+npx mega-minds record-agent-complete "bug-tracker-agent" "bug-tracking-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for bug-tracker-agent
+```bash
+# Starting bug tracking work
+npx mega-minds record-agent-start "bug-tracker-agent" "Analyzing payment processing failures and coordinating critical issue resolution"
+
+# Updating progress at 80%
+npx mega-minds update-agent-status "bug-tracker-agent" "Completed root cause analysis and bug documentation, now coordinating fix implementation" "80"
+
+# Handing off to backend-development-agent
+npx mega-minds record-handoff "bug-tracker-agent" "backend-development-agent" "Fix critical payment processing bug identified in authentication timeout pattern analysis"
+
+# Completing bug tracking work
+npx mega-minds record-agent-complete "bug-tracker-agent" "Delivered comprehensive bug analysis with prioritized fix recommendations and resolution coordination" "backend-development-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

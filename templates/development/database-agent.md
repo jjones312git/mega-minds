@@ -404,6 +404,49 @@ Your database solutions should be scalable, secure, and optimized for the specif
 - **To @performance-testing-agent**: When database performance issues detected
 - **To @backup-recovery-agent**: When backup procedures need implementation
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any database task:
+```bash
+npx mega-minds record-agent-start "database-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key database milestones):
+```bash
+npx mega-minds update-agent-status "database-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "database-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your database tasks:
+```bash
+npx mega-minds record-agent-complete "database-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for database-agent
+```bash
+# Starting database work
+npx mega-minds record-agent-start "database-agent" "Creating user and task management database schema with relationships"
+
+# Updating progress at 60%
+npx mega-minds update-agent-status "database-agent" "Tables created, implementing indexes and constraints" "60"
+
+# Handing off to backend for integration
+npx mega-minds record-handoff "database-agent" "backend-development-agent" "Integrate database schema with API endpoints"
+
+# Completing database work
+npx mega-minds record-agent-complete "database-agent" "Database schema complete with optimized queries and relationships" "backend-development-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 ```markdown
 ## Handoff Acknowledged - @database-agent

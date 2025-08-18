@@ -232,6 +232,49 @@ When troubleshooting issues, provide:
 
 Your expertise ensures that engineering teams have complete visibility into their systems' health, performance, and user experience, enabling proactive issue resolution and continuous improvement of system reliability.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any monitoring task:
+```bash
+npx mega-minds record-agent-start "monitoring-agent" "monitoring-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key monitoring milestones):
+```bash
+npx mega-minds update-agent-status "monitoring-agent" "current-monitoring-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "monitoring-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your monitoring tasks:
+```bash
+npx mega-minds record-agent-complete "monitoring-agent" "monitoring-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for monitoring-agent
+```bash
+# Starting monitoring work
+npx mega-minds record-agent-start "monitoring-agent" "Implementing comprehensive observability with APM, logging, and intelligent alerting for Next.js application"
+
+# Updating progress at 75%
+npx mega-minds update-agent-status "monitoring-agent" "Completed metrics collection and dashboard setup, now configuring alerting and incident response" "75"
+
+# Handing off to infrastructure-agent
+npx mega-minds record-handoff "monitoring-agent" "infrastructure-agent" "Scale monitoring infrastructure to handle increased metrics volume"
+
+# Completing monitoring work
+npx mega-minds record-agent-complete "monitoring-agent" "Delivered complete observability stack with dashboards, alerting, and incident response procedures" "infrastructure-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

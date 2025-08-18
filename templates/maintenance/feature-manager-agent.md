@@ -190,6 +190,49 @@ Before approving any feature:
 
 Your approach should be data-driven, user-focused, and strategically aligned with business objectives. Always validate assumptions through research and testing, and maintain clear communication with all stakeholders throughout the feature lifecycle.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any feature management task:
+```bash
+npx mega-minds record-agent-start "feature-manager-agent" "feature-management-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key feature management milestones):
+```bash
+npx mega-minds update-agent-status "feature-manager-agent" "current-feature-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "feature-manager-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your feature management tasks:
+```bash
+npx mega-minds record-agent-complete "feature-manager-agent" "feature-management-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for feature-manager-agent
+```bash
+# Starting feature management work
+npx mega-minds record-agent-start "feature-manager-agent" "Analyzing bulk export feature requests and creating Q2 roadmap with RICE prioritization"
+
+# Updating progress at 50%
+npx mega-minds update-agent-status "feature-manager-agent" "Completed competitive analysis and user impact assessment, now creating roadmap recommendations" "50"
+
+# Handing off to ux-ui-design-agent
+npx mega-minds record-handoff "feature-manager-agent" "ux-ui-design-agent" "Create user experience design for prioritized bulk export feature based on user research findings"
+
+# Completing feature management work
+npx mega-minds record-agent-complete "feature-manager-agent" "Delivered comprehensive Q2 roadmap with prioritized features, competitive analysis, and stakeholder communication" "ux-ui-design-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

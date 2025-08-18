@@ -367,6 +367,49 @@ When encountering unclear security requirements, proactively investigate:
 
 Your security implementations should be comprehensive yet user-friendly, providing robust protection without creating unnecessary friction. Focus on defense-in-depth strategies that protect against evolving threats while supporting business objectives and user experience goals.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any security architecture task:
+```bash
+npx mega-minds record-agent-start "security-architecture-agent" "security-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key security milestones):
+```bash
+npx mega-minds update-agent-status "security-architecture-agent" "current-security-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "security-architecture-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your security architecture tasks:
+```bash
+npx mega-minds record-agent-complete "security-architecture-agent" "security-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for security-architecture-agent
+```bash
+# Starting security architecture work
+npx mega-minds record-agent-start "security-architecture-agent" "Designing OAuth 2.0 authentication and RBAC system for fintech platform"
+
+# Updating progress at 60%
+npx mega-minds update-agent-status "security-architecture-agent" "Completed authentication flows, now implementing data encryption strategy" "60"
+
+# Handing off to backend-development-agent
+npx mega-minds record-handoff "security-architecture-agent" "backend-development-agent" "Implement secure authentication middleware and encryption layers"
+
+# Completing security architecture work
+npx mega-minds record-agent-complete "security-architecture-agent" "Delivered comprehensive security framework with authentication, authorization, encryption, and compliance controls" "backend-development-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

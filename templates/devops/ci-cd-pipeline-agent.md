@@ -187,6 +187,49 @@ Your expertise ensures that development teams can focus on building features whi
 - **To @monitoring-agent**: When deployment monitoring required
 - **To @testing-agent**: When pipeline test failures occur
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any CI/CD pipeline task:
+```bash
+npx mega-minds record-agent-start "ci-cd-pipeline-agent" "cicd-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key CI/CD milestones):
+```bash
+npx mega-minds update-agent-status "ci-cd-pipeline-agent" "current-cicd-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "ci-cd-pipeline-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your CI/CD pipeline tasks:
+```bash
+npx mega-minds record-agent-complete "ci-cd-pipeline-agent" "cicd-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for ci-cd-pipeline-agent
+```bash
+# Starting CI/CD pipeline work
+npx mega-minds record-agent-start "ci-cd-pipeline-agent" "Setting up GitHub Actions workflow with automated testing and blue-green deployment to Vercel"
+
+# Updating progress at 80%
+npx mega-minds update-agent-status "ci-cd-pipeline-agent" "Completed build and test stages, now configuring deployment and rollback strategies" "80"
+
+# Handing off to monitoring-agent
+npx mega-minds record-handoff "ci-cd-pipeline-agent" "monitoring-agent" "Set up deployment monitoring and alerting for the CI/CD pipeline"
+
+# Completing CI/CD pipeline work
+npx mega-minds record-agent-complete "ci-cd-pipeline-agent" "Delivered complete CI/CD pipeline with automated testing, deployment strategies, and release management" "monitoring-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 ```markdown
 ## Handoff Acknowledged - @ci-cd-pipeline-agent

@@ -359,6 +359,49 @@ Your security analysis should be thorough, practical, and focused on protecting 
 - **To @backend-development-agent**: When security fixes needed
 - **To @infrastructure-agent**: When infrastructure security issues identified
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any security testing task:
+```bash
+npx mega-minds record-agent-start "security-testing-agent" "security-testing-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key security testing milestones):
+```bash
+npx mega-minds update-agent-status "security-testing-agent" "current-security-testing-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "security-testing-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your security testing tasks:
+```bash
+npx mega-minds record-agent-complete "security-testing-agent" "security-testing-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for security-testing-agent
+```bash
+# Starting security testing work
+npx mega-minds record-agent-start "security-testing-agent" "Comprehensive security audit with OWASP Top 10 assessment and GDPR compliance validation"
+
+# Updating progress at 65%
+npx mega-minds update-agent-status "security-testing-agent" "Completed vulnerability scanning and penetration testing, now validating compliance requirements" "65"
+
+# Handing off to security-architecture-agent
+npx mega-minds record-handoff "security-testing-agent" "security-architecture-agent" "Address authentication design flaws identified in security assessment"
+
+# Completing security testing work
+npx mega-minds record-agent-complete "security-testing-agent" "Delivered comprehensive security assessment with vulnerability report and remediation roadmap" "security-architecture-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 ```markdown
 ## Handoff Acknowledged - @security-testing-agent

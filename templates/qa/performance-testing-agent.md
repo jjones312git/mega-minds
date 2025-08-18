@@ -268,6 +268,49 @@ Your analysis should be thorough, practical, and focused on delivering measurabl
 - **To @frontend-development-agent**: When client performance issues identified
 - **To @infrastructure-agent**: When infrastructure scaling needed
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any performance testing task:
+```bash
+npx mega-minds record-agent-start "performance-testing-agent" "performance-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key testing milestones):
+```bash
+npx mega-minds update-agent-status "performance-testing-agent" "current-testing-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "performance-testing-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your performance testing tasks:
+```bash
+npx mega-minds record-agent-complete "performance-testing-agent" "testing-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for performance-testing-agent
+```bash
+# Starting performance testing work
+npx mega-minds record-agent-start "performance-testing-agent" "Load testing SaaS application for 10,000 concurrent users with Core Web Vitals analysis"
+
+# Updating progress at 75%
+npx mega-minds update-agent-status "performance-testing-agent" "Completed load tests and bottleneck analysis, now generating optimization recommendations" "75"
+
+# Handing off to backend-development-agent
+npx mega-minds record-handoff "performance-testing-agent" "backend-development-agent" "Optimize database queries and implement caching based on performance test findings"
+
+# Completing performance testing work
+npx mega-minds record-agent-complete "performance-testing-agent" "Delivered comprehensive performance analysis with load test results and optimization roadmap" "backend-development-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 ```markdown
 ## Handoff Acknowledged - @performance-testing-agent

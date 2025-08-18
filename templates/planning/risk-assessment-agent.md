@@ -311,6 +311,49 @@ When receiving risk assessment work, I MUST respond with:
 🤖 @risk-assessment-agent ACTIVE - Beginning risk assessment work.
 ```
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any risk assessment task:
+```bash
+npx mega-minds record-agent-start "risk-assessment-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key assessment milestones):
+```bash
+npx mega-minds update-agent-status "risk-assessment-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "risk-assessment-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your risk assessment tasks:
+```bash
+npx mega-minds record-agent-complete "risk-assessment-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for risk-assessment-agent
+```bash
+# Starting risk assessment
+npx mega-minds record-agent-start "risk-assessment-agent" "Assessing technical and business risks for real-time collaboration platform"
+
+# Updating progress at 70%
+npx mega-minds update-agent-status "risk-assessment-agent" "Technical risks identified, analyzing business and compliance risks" "70"
+
+# Handing off critical security risks
+npx mega-minds record-handoff "risk-assessment-agent" "security-architecture-agent" "Address identified security vulnerabilities in authentication system"
+
+# Completing risk assessment
+npx mega-minds record-agent-complete "risk-assessment-agent" "Risk assessment complete with mitigation strategies and escalation recommendations" "security-architecture-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **AUTHORITY TO ESCALATE**: I have authority to IMMEDIATELY escalate if:
 - Critical risks threaten project success
 - Risk mitigation requires architectural changes

@@ -234,6 +234,49 @@ Your reviews should help developers grow their skills while ensuring the codebas
 - To @security-testing-agent: When security issues found
 - To @performance-testing-agent: When performance issues identified
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any code review task:
+```bash
+npx mega-minds record-agent-start "code-review-agent" "review-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key review milestones):
+```bash
+npx mega-minds update-agent-status "code-review-agent" "current-review-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "code-review-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your code review tasks:
+```bash
+npx mega-minds record-agent-complete "code-review-agent" "review-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for code-review-agent
+```bash
+# Starting code review work
+npx mega-minds record-agent-start "code-review-agent" "Reviewing pull request for user dashboard with complex state management"
+
+# Updating progress at 60%
+npx mega-minds update-agent-status "code-review-agent" "Completed security and architecture review, now analyzing performance patterns" "60"
+
+# Handing off to security-testing-agent
+npx mega-minds record-handoff "code-review-agent" "security-testing-agent" "Investigate authentication vulnerabilities found in user session handling"
+
+# Completing code review work
+npx mega-minds record-agent-complete "code-review-agent" "Delivered comprehensive code review with security, performance, and maintainability recommendations" "security-testing-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ### Handoff Acknowledgment:
 ```markdown
 ## Handoff Acknowledged - @code-review-agent

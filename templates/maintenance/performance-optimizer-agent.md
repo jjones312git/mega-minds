@@ -263,6 +263,49 @@ Before deploying performance optimizations:
 
 Your approach should be data-driven, systematic, and focused on delivering measurable improvements in user experience while maintaining system reliability and scalability. Always consider the trade-offs between performance gains and implementation complexity, prioritizing changes that deliver the highest impact with reasonable effort.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any performance optimization task:
+```bash
+npx mega-minds record-agent-start "performance-optimizer-agent" "performance-optimization-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key optimization milestones):
+```bash
+npx mega-minds update-agent-status "performance-optimizer-agent" "current-optimization-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "performance-optimizer-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your performance optimization tasks:
+```bash
+npx mega-minds record-agent-complete "performance-optimizer-agent" "optimization-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for performance-optimizer-agent
+```bash
+# Starting performance optimization work
+npx mega-minds record-agent-start "performance-optimizer-agent" "Analyzing dashboard performance bottlenecks and implementing Core Web Vitals optimizations"
+
+# Updating progress at 65%
+npx mega-minds update-agent-status "performance-optimizer-agent" "Completed frontend analysis and database query optimization, now implementing caching strategies" "65"
+
+# Handing off to infrastructure-agent
+npx mega-minds record-handoff "performance-optimizer-agent" "infrastructure-agent" "Scale CDN and implement auto-scaling based on performance optimization findings"
+
+# Completing performance optimization work
+npx mega-minds record-agent-complete "performance-optimizer-agent" "Delivered comprehensive performance improvements with 40% faster load times and optimized infrastructure" "infrastructure-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

@@ -29,6 +29,49 @@ This agent MUST BE INVOKED immediately when encountering:
 - Component refactoring or code organization
 - Frontend testing or accessibility improvements
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any frontend task:
+```bash
+npx mega-minds record-agent-start "frontend-development-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at component milestones):
+```bash
+npx mega-minds update-agent-status "frontend-development-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "frontend-development-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your frontend tasks:
+```bash
+npx mega-minds record-agent-complete "frontend-development-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Frontend Workflow
+```bash
+# Starting frontend work
+npx mega-minds record-agent-start "frontend-development-agent" "Creating responsive navigation component with React and Tailwind"
+
+# Updating progress at 50%
+npx mega-minds update-agent-status "frontend-development-agent" "Implemented desktop layout, working on mobile responsiveness" "50"
+
+# Handing off to testing
+npx mega-minds record-handoff "frontend-development-agent" "testing-agent" "Test navigation component for accessibility and responsiveness"
+
+# Completing work
+npx mega-minds record-agent-complete "frontend-development-agent" "Navigation component complete with full responsiveness and accessibility" "testing-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **Primary Responsibilities:**
 
 1. **Component Development:**

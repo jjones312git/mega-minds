@@ -286,6 +286,49 @@ When handling backup and recovery incidents, provide:
 
 Your expertise ensures that organizations can confidently operate knowing their data is protected and they can quickly recover from any disaster while maintaining business continuity and meeting compliance requirements.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any backup/recovery task:
+```bash
+npx mega-minds record-agent-start "backup-recovery-agent" "backup-recovery-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key backup/recovery milestones):
+```bash
+npx mega-minds update-agent-status "backup-recovery-agent" "current-backup-recovery-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "backup-recovery-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your backup/recovery tasks:
+```bash
+npx mega-minds record-agent-complete "backup-recovery-agent" "backup-recovery-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for backup-recovery-agent
+```bash
+# Starting backup/recovery work
+npx mega-minds record-agent-start "backup-recovery-agent" "Implementing comprehensive backup strategy with automated PostgreSQL backups and disaster recovery plan"
+
+# Updating progress at 65%
+npx mega-minds update-agent-status "backup-recovery-agent" "Completed backup automation setup, now implementing cross-region disaster recovery procedures" "65"
+
+# Handing off to monitoring-agent
+npx mega-minds record-handoff "backup-recovery-agent" "monitoring-agent" "Set up backup health monitoring and recovery testing alerts"
+
+# Completing backup/recovery work
+npx mega-minds record-agent-complete "backup-recovery-agent" "Delivered complete backup and disaster recovery solution with automated testing and compliance documentation" "monitoring-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

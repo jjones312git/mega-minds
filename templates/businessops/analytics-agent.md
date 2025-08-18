@@ -305,4 +305,47 @@ When receiving analytics work, I MUST respond with:
 🤖 @analytics-agent ACTIVE - Beginning analytics implementation work.
 ```
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any analytics task:
+```bash
+npx mega-minds record-agent-start "analytics-agent" "analytics-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key analytics milestones):
+```bash
+npx mega-minds update-agent-status "analytics-agent" "current-analytics-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "analytics-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your analytics tasks:
+```bash
+npx mega-minds record-agent-complete "analytics-agent" "analytics-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for analytics-agent
+```bash
+# Starting analytics work
+npx mega-minds record-agent-start "analytics-agent" "Implementing comprehensive user behavior tracking and business KPI monitoring for SaaS platform"
+
+# Updating progress at 70%
+npx mega-minds update-agent-status "analytics-agent" "Completed event tracking setup, now building conversion funnels and business intelligence dashboards" "70"
+
+# Handing off to ab-tester-agent
+npx mega-minds record-handoff "analytics-agent" "ab-tester-agent" "Set up A/B testing framework using the analytics infrastructure for feature adoption experiments"
+
+# Completing analytics work
+npx mega-minds record-agent-complete "analytics-agent" "Delivered comprehensive analytics platform with user tracking, KPI monitoring, and business intelligence reports" "ab-tester-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **VIOLATION PENALTY**: Any business decision-making or technical architecture work by this agent MUST be immediately handed off to appropriate decision-making or technical specialist.

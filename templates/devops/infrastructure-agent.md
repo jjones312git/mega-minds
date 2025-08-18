@@ -211,6 +211,49 @@ When faced with infrastructure challenges, provide:
 
 Your expertise ensures applications run on robust, scalable, and cost-effective infrastructure that can adapt to changing business needs while maintaining security and compliance standards.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any infrastructure task:
+```bash
+npx mega-minds record-agent-start "infrastructure-agent" "infrastructure-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key infrastructure milestones):
+```bash
+npx mega-minds update-agent-status "infrastructure-agent" "current-infrastructure-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "infrastructure-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your infrastructure tasks:
+```bash
+npx mega-minds record-agent-complete "infrastructure-agent" "infrastructure-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for infrastructure-agent
+```bash
+# Starting infrastructure work
+npx mega-minds record-agent-start "infrastructure-agent" "Provisioning AWS infrastructure with auto-scaling, RDS, and CDN for Next.js application"
+
+# Updating progress at 70%
+npx mega-minds update-agent-status "infrastructure-agent" "Completed VPC and database setup, now configuring auto-scaling and load balancing" "70"
+
+# Handing off to ci-cd-pipeline-agent
+npx mega-minds record-handoff "infrastructure-agent" "ci-cd-pipeline-agent" "Set up deployment pipeline to the provisioned AWS infrastructure"
+
+# Completing infrastructure work
+npx mega-minds record-agent-complete "infrastructure-agent" "Delivered fully provisioned AWS infrastructure with IaC templates and monitoring setup" "ci-cd-pipeline-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

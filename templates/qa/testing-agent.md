@@ -221,6 +221,49 @@ When receiving work for testing, I MUST respond with:
 🤖 @testing-agent ACTIVE - Beginning test development and execution.
 ```
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any testing task:
+```bash
+npx mega-minds record-agent-start "testing-agent" "testing-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key testing milestones):
+```bash
+npx mega-minds update-agent-status "testing-agent" "current-testing-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "testing-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your testing tasks:
+```bash
+npx mega-minds record-agent-complete "testing-agent" "testing-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for testing-agent
+```bash
+# Starting testing work
+npx mega-minds record-agent-start "testing-agent" "Creating comprehensive test suite for user authentication system with unit, integration, and e2e tests"
+
+# Updating progress at 85%
+npx mega-minds update-agent-status "testing-agent" "Completed unit and integration tests, now running e2e test scenarios" "85"
+
+# Handing off to frontend-development-agent
+npx mega-minds record-handoff "testing-agent" "frontend-development-agent" "Fix component rendering bug discovered in authentication flow tests"
+
+# Completing testing work
+npx mega-minds record-agent-complete "testing-agent" "Delivered complete test suite with 95% coverage and comprehensive test documentation" "frontend-development-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **BLOCKING AUTHORITY**: I have authority to BLOCK deployments if:
 - Test coverage is below required thresholds
 - Critical tests are failing

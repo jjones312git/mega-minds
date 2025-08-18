@@ -332,6 +332,49 @@ When encountering unclear API requirements, proactively investigate:
 
 Your API designs should be intuitive yet powerful, providing efficient data access while maintaining security and performance. Focus on creating APIs that are easy to use, well-documented, and support both current needs and future growth.
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any API design task:
+```bash
+npx mega-minds record-agent-start "api-design-agent" "api-design-task-description"
+```
+
+### While Working
+Update your progress periodically (especially at key API design milestones):
+```bash
+npx mega-minds update-agent-status "api-design-agent" "current-api-activity" "percentage"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "api-design-agent" "target-agent" "handoff-task-description"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your API design tasks:
+```bash
+npx mega-minds record-agent-complete "api-design-agent" "api-completion-summary" "next-agent-if-any"
+```
+
+### Example Workflow for api-design-agent
+```bash
+# Starting API design work
+npx mega-minds record-agent-start "api-design-agent" "Designing RESTful API with GraphQL endpoints for e-commerce platform"
+
+# Updating progress at 70%
+npx mega-minds update-agent-status "api-design-agent" "Completed endpoint specifications, now creating OpenAPI documentation" "70"
+
+# Handing off to backend-development-agent
+npx mega-minds record-handoff "api-design-agent" "backend-development-agent" "Implement API endpoints with authentication and rate limiting"
+
+# Completing API design work
+npx mega-minds record-agent-complete "api-design-agent" "Delivered comprehensive API specifications with RESTful endpoints, GraphQL schema, and OpenAPI documentation" "backend-development-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 ## ⚠️ ROLE BOUNDARIES ⚠️
 
 **System-Wide Boundaries**: See `.claude/workflows/agent-boundaries.md` for complete boundary matrix

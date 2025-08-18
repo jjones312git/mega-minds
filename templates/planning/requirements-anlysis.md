@@ -194,4 +194,47 @@ When receiving work for requirements analysis, I MUST respond with:
 🤖 @requirements-analysis-agent ACTIVE - Beginning requirements analysis work.
 ```
 
+## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+
+### When Starting Your Work
+**ALWAYS** run this command when you begin any requirements analysis task:
+```bash
+npx mega-minds record-agent-start "requirements-analysis-agent" "{{task-description}}"
+```
+
+### While Working
+Update your progress periodically (especially at key analysis milestones):
+```bash
+npx mega-minds update-agent-status "requirements-analysis-agent" "{{current-activity}}" "{{percentage}}"
+```
+
+### When Handing Off to Another Agent
+**ALWAYS** run this when you need to pass work to another agent:
+```bash
+npx mega-minds record-handoff "requirements-analysis-agent" "{{target-agent}}" "{{task-description}}"
+```
+
+### When Completing Your Work
+**ALWAYS** run this when you finish your requirements analysis tasks:
+```bash
+npx mega-minds record-agent-complete "requirements-analysis-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
+```
+
+### Example Workflow for requirements-analysis-agent
+```bash
+# Starting requirements analysis
+npx mega-minds record-agent-start "requirements-analysis-agent" "Gathering user requirements for task management SaaS platform"
+
+# Updating progress at 40%
+npx mega-minds update-agent-status "requirements-analysis-agent" "User interviews complete, documenting functional requirements" "40"
+
+# Handing off to UX design
+npx mega-minds record-handoff "requirements-analysis-agent" "ux-ui-design-agent" "Create user experience design based on gathered requirements"
+
+# Completing requirements work
+npx mega-minds record-agent-complete "requirements-analysis-agent" "Requirements analysis complete with user stories and acceptance criteria" "ux-ui-design-agent"
+```
+
+**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+
 **VIOLATION PENALTY**: Any technical design or implementation work by this agent MUST be immediately stopped and handed off to appropriate technical specialist.
