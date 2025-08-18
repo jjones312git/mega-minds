@@ -29,20 +29,41 @@ These core files are located in: `node_modules/mega-minds/lib/`
 
 Mega-minds now supports Claude Code hooks for automated workflow management:
 
-**Setup Commands:**
-- `npx mega-minds setup-hooks` - Configure automated hooks
+### 🖥️ IMPORTANT: Where to Run Commands
+
+**Run in your REGULAR TERMINAL (not Claude Code):**
+- `npx mega-minds setup-hooks` - Configure automated hooks (interactive setup)
+
+**Run in CLAUDE CODE (these work automatically):**
 - `npx mega-minds hook-status` - Check hook configuration and status
+- `npx mega-minds trigger-quality-gates` - Run quality checks
+- `npx mega-minds save-session-auto` - Auto-save with hook context
+- `npx mega-minds preserve-context` - Smart context preservation
+
+### 📋 Setup Steps for Non-Technical Users:
+
+1. **Open your computer's terminal/command prompt** (NOT Claude Code)
+   - Mac: Press `Cmd + Space`, type "Terminal", press Enter
+   - Windows: Press `Win + R`, type "cmd", press Enter
+   
+2. **Navigate to your project folder:**
+   ```bash
+   cd path/to/your/project
+   ```
+   
+3. **Setup hooks once:**
+   ```bash
+   npx mega-minds setup-hooks
+   ```
+   Follow the prompts to choose which automations you want.
+
+4. **Done!** Now Claude Code will automatically use these hooks.
 
 **Automated Features (when hooks are enabled):**
 - **Quality Gates**: Auto-run tests and code review after Edit/Write operations
 - **Session Auto-Save**: Automatically save sessions when agents complete work
 - **Context Preservation**: Smart memory cleanup before Claude Code compacts context
 - **Desktop Notifications**: Real-time alerts for key development events
-
-**Hook Commands (triggered automatically):**
-- `npx mega-minds trigger-quality-gates` - Run quality checks
-- `npx mega-minds save-session-auto` - Auto-save with hook context
-- `npx mega-minds preserve-context` - Smart context preservation
 
 ## Project Overview
 

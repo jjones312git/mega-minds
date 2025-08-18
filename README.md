@@ -141,17 +141,29 @@ Open Claude Code in your project directory. It will automatically read the `.cla
 
 ### 3. Enable Automated Hooks (Optional but Recommended)
 
-Enable Claude Code hooks for automated workflow enhancement:
+**🚨 IMPORTANT FOR NON-TECHNICAL USERS:**
 
-```bash
-npx mega-minds setup-hooks
-```
+The hooks setup command must be run in your **computer's regular terminal**, NOT in Claude Code:
 
-This will configure:
-- **Quality Gates**: Automatic testing after code changes
-- **Session Auto-Save**: Persistent development sessions
-- **Context Preservation**: Smart memory management
-- **Desktop Notifications**: Real-time development alerts
+#### For Mac Users:
+1. Press `Cmd + Space` 
+2. Type "Terminal" and press Enter
+3. Navigate to your project: `cd path/to/your/project`
+4. Run: `npx mega-minds setup-hooks`
+
+#### For Windows Users:
+1. Press `Win + R`
+2. Type "cmd" and press Enter  
+3. Navigate to your project: `cd path\to\your\project`
+4. Run: `npx mega-minds setup-hooks`
+
+#### What This Enables:
+- **Auto Quality Gates**: Tests and code review run automatically after code changes
+- **Smart Session Saves**: Your work is automatically saved when agents finish tasks
+- **Context Protection**: Preserves important workflow state during memory cleanup
+- **Development Notifications**: Desktop alerts for key milestones
+
+**Once setup is complete, everything else works automatically in Claude Code!**
 
 ### 4. Begin Development
 

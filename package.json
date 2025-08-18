@@ -1,6 +1,6 @@
 {
     "name": "mega-minds",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management and Claude Code hooks integration",
     "main": "lib/installer.js",
     "bin": {
