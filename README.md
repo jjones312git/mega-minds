@@ -40,6 +40,13 @@ MegaMinds creates an intelligent development ecosystem where:
 - Problem-solving swarms for critical issues
 - Clear escalation paths for blockers
 
+### 🔗 Claude Code Hooks Integration (NEW)
+- **Automated Quality Gates**: Auto-run tests and code review after every code change
+- **Smart Session Management**: Automatically save sessions when agents complete work
+- **Intelligent Context Preservation**: Protect critical workflow state during memory compaction
+- **Real-time Notifications**: Desktop alerts for key development milestones
+- **Zero-Configuration Setup**: One command enables all automation features
+
 ## Installation
 
 ### Prerequisites
@@ -132,7 +139,21 @@ Open Claude Code in your project directory. It will automatically read the `.cla
 
 **Important:** The mega-minds package must remain installed as a dependency for the memory management and coordination features to work properly.
 
-### 3. Begin Development
+### 3. Enable Automated Hooks (Optional but Recommended)
+
+Enable Claude Code hooks for automated workflow enhancement:
+
+```bash
+npx mega-minds setup-hooks
+```
+
+This will configure:
+- **Quality Gates**: Automatic testing after code changes
+- **Session Auto-Save**: Persistent development sessions
+- **Context Preservation**: Smart memory management
+- **Desktop Notifications**: Real-time development alerts
+
+### 4. Begin Development
 
 Start with a high-level request to Claude Code:
 
@@ -148,6 +169,8 @@ The AI development team will:
 4. Implement features systematically
 5. Test everything thoroughly
 6. Set up deployment infrastructure
+
+With hooks enabled, quality gates and session saves happen automatically!
 
 ## Available Commands
 
@@ -165,6 +188,13 @@ The AI development team will:
 - `npx mega-minds memory-cleanup` - Force memory cleanup and garbage collection
 - `npx mega-minds compress-context` - Optimize memory when approaching limits
 - `npx mega-minds update-memory "what happened"` - Update project documentation
+
+### 🔗 Claude Code Hooks Integration (NEW)
+- `npx mega-minds setup-hooks` - Configure automated workflow hooks
+- `npx mega-minds hook-status` - Check hook configuration and activity
+- `npx mega-minds trigger-quality-gates` - Manual quality gate execution
+- `npx mega-minds save-session-auto` - Hook-triggered session save
+- `npx mega-minds preserve-context` - Smart context preservation
 
 **Note:** After installation, use `npx mega-minds` to run commands, ensuring you're using the project-specific version.
 

@@ -245,6 +245,31 @@ async function main() {
                 console.log(`   Memory files: ${stats.memoryStats.memoryFiles}`);
                 break;
 
+            case 'setup-hooks':
+                const { setupHooks } = require('../lib/commands/setup-hooks');
+                await setupHooks();
+                break;
+
+            case 'hook-status':
+                const { hookStatus } = require('../lib/commands/hook-status');
+                await hookStatus();
+                break;
+
+            case 'trigger-quality-gates':
+                const { triggerQualityGates } = require('../lib/commands/trigger-quality-gates');
+                await triggerQualityGates();
+                break;
+
+            case 'save-session-auto':
+                const { saveSessionAuto } = require('../lib/commands/save-session-auto');
+                await saveSessionAuto();
+                break;
+
+            case 'preserve-context':
+                const { preserveContext } = require('../lib/commands/preserve-context');
+                await preserveContext();
+                break;
+
             case 'verify':
                 const { verifyInstallation } = require('../lib/verify-installation');
                 verifyInstallation();
@@ -264,6 +289,8 @@ async function main() {
                 console.log('  mega-minds compress-context        - Optimize memory for Claude Code');
                 console.log('  mega-minds update-memory "desc"    - Update project memory');
                 console.log('  mega-minds stats                   - Show project statistics');
+                console.log('  mega-minds setup-hooks             - Configure Claude Code hooks');
+                console.log('  mega-minds hook-status             - Check hook configuration');
                 console.log('\n💡 Workflow:');
                 console.log('  1. Run "mega-minds init" in your project folder');
                 console.log('  2. Start Claude Code (it will read CLAUDE.md automatically)');

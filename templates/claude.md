@@ -23,6 +23,27 @@ These core files are located in: `node_modules/mega-minds/lib/`
 - `npx mega-minds memory-status` - Check memory health
 - `npx mega-minds memory-cleanup` - Force memory cleanup
 
+## Claude Code Hooks Integration 🔗
+
+**NEW: Automated Workflow Enhancement**
+
+Mega-minds now supports Claude Code hooks for automated workflow management:
+
+**Setup Commands:**
+- `npx mega-minds setup-hooks` - Configure automated hooks
+- `npx mega-minds hook-status` - Check hook configuration and status
+
+**Automated Features (when hooks are enabled):**
+- **Quality Gates**: Auto-run tests and code review after Edit/Write operations
+- **Session Auto-Save**: Automatically save sessions when agents complete work
+- **Context Preservation**: Smart memory cleanup before Claude Code compacts context
+- **Desktop Notifications**: Real-time alerts for key development events
+
+**Hook Commands (triggered automatically):**
+- `npx mega-minds trigger-quality-gates` - Run quality checks
+- `npx mega-minds save-session-auto` - Auto-save with hook context
+- `npx mega-minds preserve-context` - Smart context preservation
+
 ## Project Overview
 
 **Project**: [YOUR_PROJECT_NAME]

@@ -27,7 +27,6 @@ coverage/
 .gitignore
 
 # Testing
-test/
 tests/
 *.test.js
 *.spec.js

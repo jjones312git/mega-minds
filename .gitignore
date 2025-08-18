@@ -36,6 +36,14 @@ tmp/
 temp/
 *.tmp
 
+# Test artifacts
+tests/temp/
+tests/*/temp/
+
+# Claude Code local configuration (project-specific settings)
+.claude/
+.mega-minds/
+
 # OS files
 Thumbs.db
 Desktop.ini

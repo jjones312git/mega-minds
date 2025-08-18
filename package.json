@@ -1,11 +1,18 @@
 {
     "name": "mega-minds",
-    "version": "1.2.3",
-    "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management",
+    "version": "1.3.0",
+    "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management and Claude Code hooks integration",
     "main": "lib/installer.js",
     "bin": {
         "mega-minds": "./bin/mega-minds"
     },
+    "files": [
+        "bin/",
+        "lib/",
+        "templates/",
+        "README.md",
+        "LICENSE"
+    ],
     "scripts": {
         "test": "jest",
         "test:watch": "jest --watch",
@@ -23,7 +30,10 @@
         "automation",
         "task-management",
         "coordination",
-        "validation"
+        "validation",
+        "hooks",
+        "quality-gates",
+        "claude-code"
     ],
     "author": "Jesse Jones",
     "license": "MIT",
