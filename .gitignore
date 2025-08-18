@@ -37,8 +37,15 @@ temp/
 *.tmp
 
 # Test artifacts
-tests/temp/
-tests/*/temp/
+tests/
+jest.config.js
+eslint.config.mjs
+
+# Development documentation
+FOLDER_STRUCTURE.md
+IMPLEMENTATION_PLAN.md
+PRD.md
+idea_enhancement.md
 
 # Claude Code local configuration (project-specific settings)
 .claude/
