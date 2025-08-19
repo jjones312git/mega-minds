@@ -320,6 +320,24 @@ async function main() {
                 await updateAgentStatus(args[0], args[1], args[2]);
                 break;
 
+            case 'acknowledge-handoff':
+                const { acknowledgeHandoff } = require('../lib/commands/acknowledge-handoff');
+                if (args.length < 1) {
+                    console.error('❌ Usage: mega-minds acknowledge-handoff "handoff-id" ["acknowledgment-message"]');
+                    process.exit(1);
+                }
+                await acknowledgeHandoff(args[0], args.slice(1).join(' '));
+                break;
+
+            case 'complete-handoff':
+                const { completeHandoff } = require('../lib/commands/complete-handoff');
+                if (args.length < 1) {
+                    console.error('❌ Usage: mega-minds complete-handoff "handoff-id" ["completion-summary"]');
+                    process.exit(1);
+                }
+                await completeHandoff(args[0], args.slice(1).join(' '));
+                break;
+
             // MEGA-MINDS 2.0: Quality Gate Commands
             case 'run-quality-gates':
                 const { runQualityGates } = require('../lib/commands/run-quality-gates');
@@ -592,6 +610,8 @@ async function main() {
                 console.log('  mega-minds record-agent-complete   - Record agent completion');
                 console.log('  mega-minds record-handoff          - Record explicit handoff');
                 console.log('  mega-minds update-agent-status     - Update agent progress');
+                console.log('  mega-minds acknowledge-handoff     - Acknowledge received handoff');
+                console.log('  mega-minds complete-handoff        - Complete handoff task');
                 console.log('\n🛡️ Quality Gate Commands (v2.0):');
                 console.log('  mega-minds run-quality-gates       - Run automated quality checks');
                 console.log('  mega-minds quality-status          - Show quality metrics and PRD compliance');
