@@ -291,13 +291,13 @@ Your expertise ensures that organizations can confidently operate knowing their 
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any backup/recovery task:
 ```bash
-npx mega-minds record-agent-start "backup-recovery-agent" "backup-recovery-task-description"
+npx mega-minds record-agent-start "backup-recovery-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key backup/recovery milestones):
 ```bash
-npx mega-minds update-agent-status "backup-recovery-agent" "current-backup-recovery-activity" "percentage"
+npx mega-minds update-agent-status "backup-recovery-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent

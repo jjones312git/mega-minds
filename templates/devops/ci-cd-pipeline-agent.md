@@ -192,13 +192,13 @@ Your expertise ensures that development teams can focus on building features whi
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any CI/CD pipeline task:
 ```bash
-npx mega-minds record-agent-start "ci-cd-pipeline-agent" "cicd-task-description"
+npx mega-minds record-agent-start "ci-cd-pipeline-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key CI/CD milestones):
 ```bash
-npx mega-minds update-agent-status "ci-cd-pipeline-agent" "current-cicd-activity" "percentage"
+npx mega-minds update-agent-status "ci-cd-pipeline-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent

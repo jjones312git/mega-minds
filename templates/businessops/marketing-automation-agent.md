@@ -531,13 +531,13 @@ When implementing marketing automation, focus on creating personalized, value-dr
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any marketing automation task:
 ```bash
-npx mega-minds record-agent-start "marketing-automation-agent" "marketing-automation-task-description"
+npx mega-minds record-agent-start "marketing-automation-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key marketing automation milestones):
 ```bash
-npx mega-minds update-agent-status "marketing-automation-agent" "current-marketing-activity" "percentage"
+npx mega-minds update-agent-status "marketing-automation-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent

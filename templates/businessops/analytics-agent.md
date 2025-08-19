@@ -310,13 +310,13 @@ When receiving analytics work, I MUST respond with:
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any analytics task:
 ```bash
-npx mega-minds record-agent-start "analytics-agent" "analytics-task-description"
+npx mega-minds record-agent-start "analytics-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key analytics milestones):
 ```bash
-npx mega-minds update-agent-status "analytics-agent" "current-analytics-activity" "percentage"
+npx mega-minds update-agent-status "analytics-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent

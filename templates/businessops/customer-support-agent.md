@@ -388,13 +388,13 @@ When implementing customer support systems, always prioritize user experience an
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any customer support task:
 ```bash
-npx mega-minds record-agent-start "customer-support-agent" "support-task-description"
+npx mega-minds record-agent-start "customer-support-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key support milestones):
 ```bash
-npx mega-minds update-agent-status "customer-support-agent" "current-support-activity" "percentage"
+npx mega-minds update-agent-status "customer-support-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent

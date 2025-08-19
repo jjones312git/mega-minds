@@ -216,13 +216,13 @@ Your expertise ensures applications run on robust, scalable, and cost-effective 
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any infrastructure task:
 ```bash
-npx mega-minds record-agent-start "infrastructure-agent" "infrastructure-task-description"
+npx mega-minds record-agent-start "infrastructure-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key infrastructure milestones):
 ```bash
-npx mega-minds update-agent-status "infrastructure-agent" "current-infrastructure-activity" "percentage"
+npx mega-minds update-agent-status "infrastructure-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent

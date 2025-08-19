@@ -237,13 +237,13 @@ Your expertise ensures that engineering teams have complete visibility into thei
 ### When Starting Your Work
 **ALWAYS** run this command when you begin any monitoring task:
 ```bash
-npx mega-minds record-agent-start "monitoring-agent" "monitoring-task-description"
+npx mega-minds record-agent-start "monitoring-agent" "{{task-description}}"
 ```
 
 ### While Working
 Update your progress periodically (especially at key monitoring milestones):
 ```bash
-npx mega-minds update-agent-status "monitoring-agent" "current-monitoring-activity" "percentage"
+npx mega-minds update-agent-status "monitoring-agent" "{{current-activity}}" "{{percentage}}"
 ```
 
 ### When Handing Off to Another Agent
