@@ -58,3 +58,10 @@ Desktop.ini
 # Package manager locks (keep package-lock.json for npm)
 yarn.lock
 pnpm-lock.yaml
+
+# Backup files
+*.backup
+
+# Variable-driven and optimization reports
+*variable*
+*optimization*

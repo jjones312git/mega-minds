@@ -589,6 +589,22 @@ async function main() {
                 showEnterpriseHelp();
                 break;
 
+            // Variable System Commands (v2.1) - Optional Enhancement
+            case 'variable-status':
+                const { variableStatus } = require('../lib/commands/variable-status');
+                await variableStatus(args);
+                break;
+
+            case 'performance-metrics':
+                const { performanceMetrics } = require('../lib/commands/performance-metrics');
+                await performanceMetrics(args);
+                break;
+
+            case 'cache-status':
+                const { cacheStatus } = require('../lib/commands/cache-status');
+                await cacheStatus(args);
+                break;
+
             default:
                 console.log('🤖 mega-minds AI Development Team');
                 console.log('\nUsage:');
@@ -633,6 +649,10 @@ async function main() {
                 console.log('  mega-minds team list                 - List team members');
                 console.log('  mega-minds monitoring status         - Show monitoring status');
                 console.log('  mega-minds enterprise                - Show all enterprise commands');
+                console.log('\n🔧 Variable System Commands (v2.1):');
+                console.log('  mega-minds variable-status           - Show Variable System status and values');
+                console.log('  mega-minds performance-metrics       - Display detailed performance metrics');
+                console.log('  mega-minds cache-status              - Show cache statistics and management');
                 console.log('\n💡 Workflow:');
                 console.log('  1. Run "mega-minds init" in your project folder');
                 console.log('  2. Start Claude Code (it will read CLAUDE.md automatically)');
