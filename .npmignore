@@ -5,6 +5,25 @@ mega-minds.txt
 eslint.config.mjs
 .eslintrc.*
 
+# Planning and development documentation
+CLAUDE-MD-OPTIMIZATION-REPORT.md
+idea_enhancement.md
+IMPLEMENTATION_PLAN.md
+INSTALLATION_GUIDE.md
+LOCAL_TESTING_GUIDE.md
+PRD.md
+USER_GUIDE.md
+VARIABLE-DRIVEN-AGENT-SYSTEM-PRD.md
+VARIABLE-DRIVEN-IMPLEMENTATION-STATUS.md
+VARIABLE-ENGINE-SPECIFICATION.md
+
+# Backup files (should not be shipped)
+*.backup
+**/*.backup
+
+# Workflow files
+workflows/
+
 # Common excludes for dev packages
 *.log
 .DS_Store
