@@ -87,7 +87,7 @@ This file serves as a template and active log for tracking all agent handoffs in
 **Timeline Established**: ✅ [2 business days]
 
 ### Protocol Compliance
-**Task Tool Used**: ✅ [Proper invocation with subagent_type: general-purpose]
+**Task Tool Used**: ✅ [Proper invocation with subagent_type: frontend-development-agent]
 **Visual Activation Marker**: ✅ [🤖 @frontend-development-agent ACTIVE used]
 **Full Handoff Template**: ✅ [Complete template from communication-protocol.md]
 **Acknowledgment Received**: ✅ [Agent confirmed understanding and timeline]

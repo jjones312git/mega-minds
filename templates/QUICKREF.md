@@ -71,7 +71,7 @@ npx mega-minds save-session "emergency save"
 ```markdown
 <function_calls>
 <invoke name="Task">
-<parameter name="subagent_type">general-purpose</parameter>
+<parameter name="subagent_type">[actual-agent-name]</parameter>
 <parameter name="description">Brief task description</parameter>
 <parameter name="prompt">## Handoff to @[agent-name]
 
@@ -84,6 +84,11 @@ npx mega-minds save-session "emergency save"
 </invoke>
 </function_calls>
 ```
+
+**Examples**:
+- `<parameter name="subagent_type">frontend-development-agent</parameter>`
+- `<parameter name="subagent_type">backend-development-agent</parameter>`
+- `<parameter name="subagent_type">database-schema-agent</parameter>`
 
 ### 🛡️ Quality Gate Workflow
 ```bash

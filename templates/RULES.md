@@ -31,7 +31,7 @@ This document contains critical rules that MUST be followed for proper mega-mind
 ```markdown
 <function_calls>
 <invoke name="Task">
-<parameter name="subagent_type">general-purpose</parameter>
+<parameter name="subagent_type">[actual-agent-name]</parameter>
 <parameter name="description">Brief task description</parameter>
 <parameter name="prompt">## Handoff to @[agent-name]
 [Complete handoff using communication-protocol.md template]
@@ -39,6 +39,10 @@ This document contains critical rules that MUST be followed for proper mega-mind
 </invoke>
 </function_calls>
 ```
+
+**CRITICAL**: Use the exact agent name, not "general-purpose":
+- ✅ `frontend-development-agent`, `database-schema-agent`, etc.
+- ❌ `general-purpose` (will cause handoff failures)
 
 **Required Elements in Every Handoff**:
 1. Visual activation marker: `🤖 @[agent-name] ACTIVE`

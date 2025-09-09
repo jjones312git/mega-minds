@@ -54,7 +54,7 @@ Beginning work on task: Create responsive navigation component
 ```
 <function_calls>
 <invoke name="Task">
-<parameter name="subagent_type">general-purpose</parameter>
+<parameter name="subagent_type">[actual-agent-name]</parameter>
 <parameter name="description">[Brief 3-5 word task description]</parameter>
 <parameter name="prompt">## Handoff to @[agent-name]
 
@@ -65,6 +65,11 @@ Beginning work on task: Create responsive navigation component
 </invoke>
 </function_calls>
 ```
+
+**CRITICAL**: The `subagent_type` must match the exact agent name:
+- ❌ `general-purpose` (generic - will fail)
+- ✅ `frontend-development-agent` (specific agent name)
+- ✅ `database-schema-agent` (specific agent name)
 
 **PROHIBITED PATTERNS**:
 - ❌ Direct @agent-name mentions without Task tool

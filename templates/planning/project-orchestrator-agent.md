@@ -108,8 +108,16 @@ Before I activate the frontend-development-agent, let me check our memory status
 
 <function_calls>
 <invoke name="Task">
-<parameter name="agent_name">frontend-development-agent</parameter>
-<parameter name="task">Create responsive navigation component</parameter>
+<parameter name="subagent_type">frontend-development-agent</parameter>
+<parameter name="description">Create responsive navigation component</parameter>
+<parameter name="prompt">## Handoff to @frontend-development-agent
+
+🤖 @frontend-development-agent ACTIVE
+
+**Context**: Navigation component needed for responsive design
+**Your Task**: Create responsive navigation component
+**Success Criteria**: Mobile-first navigation with proper accessibility
+</parameter>
 </invoke>
 </function_calls>
 ```
