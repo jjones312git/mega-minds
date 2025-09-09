@@ -311,6 +311,12 @@ async function main() {
                 await recordHandoff(args[0], args[1], args.slice(2).join(' '));
                 break;
 
+            case 'record-tool-use':
+                const ToolUseRecorder = require('../lib/commands/record-tool-use');
+                const toolRecorder = new ToolUseRecorder();
+                await toolRecorder.run(args);
+                break;
+
             case 'update-agent-status':
                 const { updateAgentStatus } = require('../lib/commands/update-agent-status');
                 if (args.length < 2) {
