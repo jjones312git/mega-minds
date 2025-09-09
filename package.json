@@ -1,62 +1,62 @@
 {
-    "name": "mega-minds",
-    "version": "2.1.1",
-    "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management and Claude Code hooks integration",
-    "main": "lib/installer.js",
-    "bin": {
-        "mega-minds": "bin/mega-minds"
-    },
-    "files": [
-        "bin/",
-        "lib/",
-        "templates/**/*.md",
-        "!templates/**/*.backup",
-        "README.md",
-        "LICENSE"
-    ],
-    "scripts": {
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:coverage": "jest --coverage",
-        "test:unit": "jest tests/unit",
-        "test:integration": "jest tests/integration"
-    },
-    "keywords": [
-        "claude",
-        "agents",
-        "workflow",
-        "development",
-        "ai",
-        "handoff",
-        "automation",
-        "task-management",
-        "coordination",
-        "validation",
-        "hooks",
-        "quality-gates",
-        "claude-code"
-    ],
-    "author": "Jesse Jones",
-    "license": "MIT",
-    "engines": {
-        "node": ">=14.0.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/jjones312git/mega-minds.git"
-    },
-    "bugs": {
-        "url": "https://github.com/jjones312git/mega-minds/issues"
-    },
-    "homepage": "https://github.com/jjones312git/mega-minds#readme",
-    "dependencies": {
-        "fs-extra": "^11.3.1",
-        "inquirer": "^12.9.3"
-    },
-    "devDependencies": {
-        "@eslint/js": "^9.33.0",
-        "eslint": "^9.33.0",
-        "globals": "^16.3.0",
-        "jest": "^29.7.0"
-    }
+  "name": "mega-minds",
+  "version": "2.1.1",
+  "description": "Enhanced multi-agent workflow system for Claude Code projects with automated handoff management and Claude Code hooks integration",
+  "main": "lib/installer.js",
+  "bin": {
+    "mega-minds": "bin/mega-minds"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "templates/**/*.md",
+    "!templates/**/*.backup",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration"
+  },
+  "keywords": [
+    "claude",
+    "agents",
+    "workflow",
+    "development",
+    "ai",
+    "handoff",
+    "automation",
+    "task-management",
+    "coordination",
+    "validation",
+    "hooks",
+    "quality-gates",
+    "claude-code"
+  ],
+  "author": "Jesse Jones",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjones312git/mega-minds.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjones312git/mega-minds/issues"
+  },
+  "homepage": "https://github.com/jjones312git/mega-minds#readme",
+  "dependencies": {
+    "fs-extra": "^11.3.1",
+    "inquirer": "^12.9.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
+    "globals": "^16.3.0",
+    "jest": "^29.7.0"
+  }
 }
