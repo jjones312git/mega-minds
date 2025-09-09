@@ -611,11 +611,18 @@ async function main() {
                 await cacheStatus(args);
                 break;
 
+            case 'doctor':
+                const DoctorCommand = require('../lib/commands/doctor');
+                const doctor = new DoctorCommand();
+                await doctor.run(args);
+                break;
+
             default:
                 console.log('🤖 mega-minds AI Development Team');
                 console.log('\nUsage:');
                 console.log('  mega-minds init                    - Initialize AI dev team in current folder');
                 console.log('  mega-minds verify                  - Verify installation integrity');
+                console.log('  mega-minds doctor                  - Diagnose and fix integration issues');
                 console.log('  mega-minds chat "request"          - Get agent coordination for a request');
                 console.log('  mega-minds agent-status            - See current agent activity');
                 console.log('  mega-minds memory-status           - Check memory usage and health');
