@@ -63,5 +63,7 @@ pnpm-lock.yaml
 *.backup
 
 # Variable-driven and optimization reports
-*variable*
-*optimization*
+*variable*.md
+*VARIABLE*.md
+*optimization*.md
+*OPTIMIZATION*.md
