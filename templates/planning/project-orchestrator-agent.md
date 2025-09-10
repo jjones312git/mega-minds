@@ -55,46 +55,41 @@ mega-minds save-session "pre-activation checkpoint"
 - Manual checks: `mega-minds memory-status`
 - Force cleanup if needed: `mega-minds memory-cleanup`
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any task:
-```bash
-npx mega-minds record-agent-start "project-orchestrator-agent" "{{task-description}}"
+### Automatic Agent Coordination Tracking
+
+**IMPORTANT**: Handoffs are now **AUTOMATICALLY TRACKED** when you use the Task tool to invoke other agents. The mega-minds system detects Task tool usage via Claude Code hooks and records all handoffs automatically.
+
+### How Automatic Tracking Works
+
+When you invoke another agent using the Task tool (e.g., `@database-schema-agent`), the system:
+
+1. **Detects the handoff** via PostToolUse hooks
+2. **Records the handoff** with timestamp and task description  
+3. **Updates session files** in `.mega-minds/sessions/`
+4. **Shows confirmation** in the terminal output
+
+### What You'll See
+
+When handoffs occur, you'll see terminal output like:
+```
+📤 HANDOFF DETECTED
+From: Claude Code Task tool
+To: database-schema-agent  
+Task: Design database schema for user management
+🔗 Handoff ID: handoff_20231201_143022_abc123
+💾 Session updated with handoff tracking
+✅ Agent coordination tracking active
 ```
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "project-orchestrator-agent" "{{current-activity}}" "{{percentage}}"
-```
+### Your Focus: Coordination, Not Commands
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when assigning work to another agent:
-```bash
-npx mega-minds record-handoff "project-orchestrator-agent" "{{target-agent}}" "{{task-description}}"
-```
+As the orchestrator, focus on:
+- **Strategic planning** and project coordination
+- **Agent selection** and task assignment via Task tool
+- **Quality oversight** and milestone tracking
+- **Problem resolution** and workflow optimization
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your coordination tasks:
-```bash
-npx mega-minds record-agent-complete "project-orchestrator-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
-
-### Example Workflow
-```bash
-# Starting orchestration
-npx mega-minds record-agent-start "project-orchestrator-agent" "Coordinating SaaS application development phases"
-
-# Updating progress
-npx mega-minds update-agent-status "project-orchestrator-agent" "Analyzing project requirements" "25"
-
-# Handing off to requirements agent
-npx mega-minds record-handoff "project-orchestrator-agent" "requirements-analysis-agent" "Gather detailed user requirements for task management SaaS"
-
-# Completing orchestration phase
-npx mega-minds record-agent-complete "project-orchestrator-agent" "Phase 1 coordination complete - requirements gathering initiated" "requirements-analysis-agent"
-```
-
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands needed** - the system handles all tracking automatically!
 
 **Example Orchestrator Behavior:**
 ```
@@ -222,30 +217,7 @@ This agent MUST BE INVOKED immediately when encountering:
 ## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
 
 ### When Starting Your Work
-**ALWAYS** run this command when you begin any project-orchestrator task:
-```bash
-npx mega-minds record-agent-start "project-orchestrator-agent" "{{task-description}}"
-```
-
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "project-orchestrator-agent" "{{current-activity}}" "{{percentage}}"
-```
-
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "project-orchestrator-agent" "{{target-agent}}" "{{task-description}}"
-```
-
-### When Completing Your Work
-**ALWAYS** run this when you finish your project-orchestrator tasks:
-```bash
-npx mega-minds record-agent-complete "project-orchestrator-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
-
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**All agent coordination is now handled automatically** - focus on your core orchestration responsibilities below.
 
 **Primary Responsibilities:**
 
