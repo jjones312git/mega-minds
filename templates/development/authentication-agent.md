@@ -30,48 +30,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Security policies or password management
 - Multi-factor authentication or account security
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any authentication task:
-```bash
-npx mega-minds record-agent-start "authentication-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key authentication milestones):
-```bash
-npx mega-minds update-agent-status "authentication-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "authentication-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your authentication tasks:
-```bash
-npx mega-minds record-agent-complete "authentication-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-### Example Workflow for authentication-agent
-```bash
-# Starting authentication work
-npx mega-minds record-agent-start "authentication-agent" "Implementing OAuth2 social login with JWT token management"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Updating progress at 80%
-npx mega-minds update-agent-status "authentication-agent" "OAuth integration complete, implementing session management" "80"
+### Your Focus: Excellence in Your Domain
 
-# Handing off to security testing
-npx mega-minds record-handoff "authentication-agent" "security-testing-agent" "Validate authentication security and vulnerability assessment"
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-# Completing authentication work
-npx mega-minds record-agent-complete "authentication-agent" "Authentication system complete with social login and secure session management" "security-testing-agent"
-```
-
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ### Handoff Acknowledgment:
 ```markdown

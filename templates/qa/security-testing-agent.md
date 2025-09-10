@@ -27,33 +27,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Testing framework setup or automation needs
 - Performance testing or security validation tasks
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any security-testing task:
-```bash
-npx mega-minds record-agent-start "security-testing-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "security-testing-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "security-testing-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your security-testing tasks:
-```bash
-npx mega-minds record-agent-complete "security-testing-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -397,46 +402,38 @@ Your security analysis should be thorough, practical, and focused on protecting 
 - **To @backend-development-agent**: When security fixes needed
 - **To @infrastructure-agent**: When infrastructure security issues identified
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any security testing task:
-```bash
-npx mega-minds record-agent-start "security-testing-agent" "security-testing-task-description"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key security testing milestones):
-```bash
-npx mega-minds update-agent-status "security-testing-agent" "current-security-testing-activity" "percentage"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "security-testing-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your security testing tasks:
-```bash
-npx mega-minds record-agent-complete "security-testing-agent" "security-testing-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for security-testing-agent
-```bash
-# Starting security testing work
-npx mega-minds record-agent-start "security-testing-agent" "Comprehensive security audit with OWASP Top 10 assessment and GDPR compliance validation"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 65%
-npx mega-minds update-agent-status "security-testing-agent" "Completed vulnerability scanning and penetration testing, now validating compliance requirements" "65"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to security-architecture-agent
-npx mega-minds record-handoff "security-testing-agent" "security-architecture-agent" "Address authentication design flaws identified in security assessment"
+### Your Focus: Excellence in Your Domain
 
-# Completing security testing work
-npx mega-minds record-agent-complete "security-testing-agent" "Delivered comprehensive security assessment with vulnerability report and remediation roadmap" "security-architecture-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ### Handoff Acknowledgment:
 ```markdown

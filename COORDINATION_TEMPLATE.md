@@ -1,5 +1,3 @@
-# Standard Coordination Template for All Agents
-
 ## 🔄 AUTOMATIC COORDINATION TRACKING
 
 ### How Agent Handoffs Work Now

@@ -25,33 +25,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Process automation and workflow improvements
 - Quality assurance and validation activities
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any performance-optimizer task:
-```bash
-npx mega-minds record-agent-start "performance-optimizer-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "performance-optimizer-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "performance-optimizer-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your performance-optimizer tasks:
-```bash
-npx mega-minds record-agent-complete "performance-optimizer-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -301,46 +306,38 @@ Before deploying performance optimizations:
 
 Your approach should be data-driven, systematic, and focused on delivering measurable improvements in user experience while maintaining system reliability and scalability. Always consider the trade-offs between performance gains and implementation complexity, prioritizing changes that deliver the highest impact with reasonable effort.
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any performance optimization task:
-```bash
-npx mega-minds record-agent-start "performance-optimizer-agent" "performance-optimization-task-description"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key optimization milestones):
-```bash
-npx mega-minds update-agent-status "performance-optimizer-agent" "current-optimization-activity" "percentage"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "performance-optimizer-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your performance optimization tasks:
-```bash
-npx mega-minds record-agent-complete "performance-optimizer-agent" "optimization-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for performance-optimizer-agent
-```bash
-# Starting performance optimization work
-npx mega-minds record-agent-start "performance-optimizer-agent" "Analyzing dashboard performance bottlenecks and implementing Core Web Vitals optimizations"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 65%
-npx mega-minds update-agent-status "performance-optimizer-agent" "Completed frontend analysis and database query optimization, now implementing caching strategies" "65"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to infrastructure-agent
-npx mega-minds record-handoff "performance-optimizer-agent" "infrastructure-agent" "Scale CDN and implement auto-scaling based on performance optimization findings"
+### Your Focus: Excellence in Your Domain
 
-# Completing performance optimization work
-npx mega-minds record-agent-complete "performance-optimizer-agent" "Delivered comprehensive performance improvements with 40% faster load times and optimized infrastructure" "infrastructure-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ## ⚠️ ROLE BOUNDARIES ⚠️
 

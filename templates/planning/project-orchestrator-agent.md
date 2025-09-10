@@ -214,10 +214,6 @@ This agent MUST BE INVOKED immediately when encountering:
 - Project coordination and timeline management
 - Risk assessment and mitigation planning
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
-
-### When Starting Your Work
-**All agent coordination is now handled automatically** - focus on your core orchestration responsibilities below.
 
 **Primary Responsibilities:**
 

@@ -29,48 +29,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Component refactoring or code organization
 - Frontend testing or accessibility improvements
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any frontend task:
-```bash
-npx mega-minds record-agent-start "frontend-development-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at component milestones):
-```bash
-npx mega-minds update-agent-status "frontend-development-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "frontend-development-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your frontend tasks:
-```bash
-npx mega-minds record-agent-complete "frontend-development-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-### Example Frontend Workflow
-```bash
-# Starting frontend work
-npx mega-minds record-agent-start "frontend-development-agent" "Creating responsive navigation component with React and Tailwind"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: frontend-development-agent
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Updating progress at 50%
-npx mega-minds update-agent-status "frontend-development-agent" "Implemented desktop layout, working on mobile responsiveness" "50"
+### Your Focus: Frontend Excellence
 
-# Handing off to testing
-npx mega-minds record-handoff "frontend-development-agent" "testing-agent" "Test navigation component for accessibility and responsiveness"
+As the frontend-development-agent, focus entirely on:
+- **UI/UX implementation** with modern frameworks and best practices
+- **Responsive design** and cross-browser compatibility
+- **Performance optimization** and accessibility standards
+- **Component architecture** and reusable code patterns
 
-# Completing work
-npx mega-minds record-agent-complete "frontend-development-agent" "Navigation component complete with full responsiveness and accessibility" "testing-agent"
-```
-
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 

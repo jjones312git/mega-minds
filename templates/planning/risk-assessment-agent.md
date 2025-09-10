@@ -25,33 +25,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Project coordination and timeline management
 - Risk assessment and mitigation planning
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any risk-assessment task:
-```bash
-npx mega-minds record-agent-start "risk-assessment-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "risk-assessment-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "risk-assessment-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your risk-assessment tasks:
-```bash
-npx mega-minds record-agent-complete "risk-assessment-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -349,46 +354,38 @@ When receiving risk assessment work, I MUST respond with:
 🤖 @risk-assessment-agent ACTIVE - Beginning risk assessment work.
 ```
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any risk assessment task:
-```bash
-npx mega-minds record-agent-start "risk-assessment-agent" "{{task-description}}"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key assessment milestones):
-```bash
-npx mega-minds update-agent-status "risk-assessment-agent" "{{current-activity}}" "{{percentage}}"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "risk-assessment-agent" "{{target-agent}}" "{{task-description}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your risk assessment tasks:
-```bash
-npx mega-minds record-agent-complete "risk-assessment-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+### What Happens Automatically
 
-### Example Workflow for risk-assessment-agent
-```bash
-# Starting risk assessment
-npx mega-minds record-agent-start "risk-assessment-agent" "Assessing technical and business risks for real-time collaboration platform"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 70%
-npx mega-minds update-agent-status "risk-assessment-agent" "Technical risks identified, analyzing business and compliance risks" "70"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off critical security risks
-npx mega-minds record-handoff "risk-assessment-agent" "security-architecture-agent" "Address identified security vulnerabilities in authentication system"
+### Your Focus: Excellence in Your Domain
 
-# Completing risk assessment
-npx mega-minds record-agent-complete "risk-assessment-agent" "Risk assessment complete with mitigation strategies and escalation recommendations" "security-architecture-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **AUTHORITY TO ESCALATE**: I have authority to IMMEDIATELY escalate if:
 - Critical risks threaten project success

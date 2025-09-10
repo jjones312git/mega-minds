@@ -26,33 +26,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Process automation and workflow improvements
 - Quality assurance and validation activities
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any marketing-automation task:
-```bash
-npx mega-minds record-agent-start "marketing-automation-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "marketing-automation-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "marketing-automation-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your marketing-automation tasks:
-```bash
-npx mega-minds record-agent-complete "marketing-automation-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -564,46 +569,38 @@ Automatically trigger campaigns based on:
 
 When implementing marketing automation, focus on creating personalized, value-driven experiences that guide users through their journey while respecting their preferences and privacy. Always measure and optimize based on user engagement and business outcomes.
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any marketing automation task:
-```bash
-npx mega-minds record-agent-start "marketing-automation-agent" "{{task-description}}"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key marketing automation milestones):
-```bash
-npx mega-minds update-agent-status "marketing-automation-agent" "{{current-activity}}" "{{percentage}}"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "marketing-automation-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your marketing automation tasks:
-```bash
-npx mega-minds record-agent-complete "marketing-automation-agent" "marketing-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for marketing-automation-agent
-```bash
-# Starting marketing automation work
-npx mega-minds record-agent-start "marketing-automation-agent" "Implementing comprehensive email marketing automation with onboarding sequences and behavioral triggers"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 55%
-npx mega-minds update-agent-status "marketing-automation-agent" "Completed email template system and workflow engine, now setting up behavioral triggers and analytics" "55"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to analytics-agent
-npx mega-minds record-handoff "marketing-automation-agent" "analytics-agent" "Set up marketing campaign performance tracking and conversion attribution analysis"
+### Your Focus: Excellence in Your Domain
 
-# Completing marketing automation work
-npx mega-minds record-agent-complete "marketing-automation-agent" "Delivered complete marketing automation system with email campaigns, user segmentation, and A/B testing" "analytics-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ## ⚠️ ROLE BOUNDARIES ⚠️
 

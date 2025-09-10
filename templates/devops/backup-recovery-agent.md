@@ -27,33 +27,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - DevOps workflow optimization requirements
 - Monitoring, logging, or operational concerns
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any backup-recovery task:
-```bash
-npx mega-minds record-agent-start "backup-recovery-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "backup-recovery-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "backup-recovery-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your backup-recovery tasks:
-```bash
-npx mega-minds record-agent-complete "backup-recovery-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -324,46 +329,38 @@ When handling backup and recovery incidents, provide:
 
 Your expertise ensures that organizations can confidently operate knowing their data is protected and they can quickly recover from any disaster while maintaining business continuity and meeting compliance requirements.
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any backup/recovery task:
-```bash
-npx mega-minds record-agent-start "backup-recovery-agent" "{{task-description}}"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key backup/recovery milestones):
-```bash
-npx mega-minds update-agent-status "backup-recovery-agent" "{{current-activity}}" "{{percentage}}"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "backup-recovery-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your backup/recovery tasks:
-```bash
-npx mega-minds record-agent-complete "backup-recovery-agent" "backup-recovery-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for backup-recovery-agent
-```bash
-# Starting backup/recovery work
-npx mega-minds record-agent-start "backup-recovery-agent" "Implementing comprehensive backup strategy with automated PostgreSQL backups and disaster recovery plan"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 65%
-npx mega-minds update-agent-status "backup-recovery-agent" "Completed backup automation setup, now implementing cross-region disaster recovery procedures" "65"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to monitoring-agent
-npx mega-minds record-handoff "backup-recovery-agent" "monitoring-agent" "Set up backup health monitoring and recovery testing alerts"
+### Your Focus: Excellence in Your Domain
 
-# Completing backup/recovery work
-npx mega-minds record-agent-complete "backup-recovery-agent" "Delivered complete backup and disaster recovery solution with automated testing and compliance documentation" "monitoring-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ## ⚠️ ROLE BOUNDARIES ⚠️
 

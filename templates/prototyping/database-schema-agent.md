@@ -41,33 +41,6 @@ This agent MUST BE INVOKED immediately when encountering:
 - API design and data modeling requirements
 - Proof-of-concept and prototype development
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
-
-### When Starting Your Work
-**ALWAYS** run this command when you begin any database-schema task:
-```bash
-npx mega-minds record-agent-start "database-schema-agent" "{{task-description}}"
-```
-
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "database-schema-agent" "{{current-activity}}" "{{percentage}}"
-```
-
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "database-schema-agent" "{{target-agent}}" "{{task-description}}"
-```
-
-### When Completing Your Work
-**ALWAYS** run this when you finish your database-schema tasks:
-```bash
-npx mega-minds record-agent-complete "database-schema-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
-
-**Agent coordination is handled automatically** - focus on database schema design excellence.
 
 **Primary Responsibilities:**
 
@@ -305,46 +278,6 @@ When encountering unclear data requirements, proactively investigate:
 
 Your database designs should be robust yet flexible, supporting current requirements while anticipating future growth and changes. Focus on creating schemas that optimize for the most critical application performance patterns while maintaining data integrity and security.
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any database schema task:
-```bash
-npx mega-minds record-agent-start "database-schema-agent" "schema-design-task-description"
-```
-
-### While Working
-Update your progress periodically (especially at key schema design milestones):
-```bash
-npx mega-minds update-agent-status "database-schema-agent" "current-schema-activity" "percentage"
-```
-
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "database-schema-agent" "target-agent" "handoff-task-description"
-```
-
-### When Completing Your Work
-**ALWAYS** run this when you finish your database schema tasks:
-```bash
-npx mega-minds record-agent-complete "database-schema-agent" "schema-completion-summary" "next-agent-if-any"
-```
-
-### Example Workflow for database-schema-agent
-```bash
-# Starting database schema work
-npx mega-minds record-agent-start "database-schema-agent" "Designing multi-tenant PostgreSQL schema with RBAC for SaaS platform"
-
-# Updating progress at 80%
-npx mega-minds update-agent-status "database-schema-agent" "Completed table design and relationships, now optimizing indexes and migrations" "80"
-
-# Handing off to api-design-agent
-npx mega-minds record-handoff "database-schema-agent" "api-design-agent" "Design API endpoints matching the database schema structure"
-
-# Completing database schema work
-npx mega-minds record-agent-complete "database-schema-agent" "Delivered optimized database schema with migrations, indexes, and performance tuning" "api-design-agent"
-```
-
-**Agent coordination is handled automatically** - focus on database schema design excellence.
 
 ## ⚠️ ROLE BOUNDARIES ⚠️
 

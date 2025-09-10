@@ -27,33 +27,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - API design and data modeling requirements
 - Proof-of-concept and prototype development
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any security-architecture task:
-```bash
-npx mega-minds record-agent-start "security-architecture-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "security-architecture-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "security-architecture-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your security-architecture tasks:
-```bash
-npx mega-minds record-agent-complete "security-architecture-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -405,46 +410,38 @@ When encountering unclear security requirements, proactively investigate:
 
 Your security implementations should be comprehensive yet user-friendly, providing robust protection without creating unnecessary friction. Focus on defense-in-depth strategies that protect against evolving threats while supporting business objectives and user experience goals.
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any security architecture task:
-```bash
-npx mega-minds record-agent-start "security-architecture-agent" "security-task-description"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key security milestones):
-```bash
-npx mega-minds update-agent-status "security-architecture-agent" "current-security-activity" "percentage"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "security-architecture-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your security architecture tasks:
-```bash
-npx mega-minds record-agent-complete "security-architecture-agent" "security-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for security-architecture-agent
-```bash
-# Starting security architecture work
-npx mega-minds record-agent-start "security-architecture-agent" "Designing OAuth 2.0 authentication and RBAC system for fintech platform"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 60%
-npx mega-minds update-agent-status "security-architecture-agent" "Completed authentication flows, now implementing data encryption strategy" "60"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to backend-development-agent
-npx mega-minds record-handoff "security-architecture-agent" "backend-development-agent" "Implement secure authentication middleware and encryption layers"
+### Your Focus: Excellence in Your Domain
 
-# Completing security architecture work
-npx mega-minds record-agent-complete "security-architecture-agent" "Delivered comprehensive security framework with authentication, authorization, encryption, and compliance controls" "backend-development-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ## ⚠️ ROLE BOUNDARIES ⚠️
 

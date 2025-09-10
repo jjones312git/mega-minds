@@ -26,33 +26,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Testing framework setup or automation needs
 - Performance testing or security validation tasks
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any performance-testing task:
-```bash
-npx mega-minds record-agent-start "performance-testing-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "performance-testing-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "performance-testing-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your performance-testing tasks:
-```bash
-npx mega-minds record-agent-complete "performance-testing-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -306,46 +311,38 @@ Your analysis should be thorough, practical, and focused on delivering measurabl
 - **To @frontend-development-agent**: When client performance issues identified
 - **To @infrastructure-agent**: When infrastructure scaling needed
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any performance testing task:
-```bash
-npx mega-minds record-agent-start "performance-testing-agent" "performance-task-description"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key testing milestones):
-```bash
-npx mega-minds update-agent-status "performance-testing-agent" "current-testing-activity" "percentage"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "performance-testing-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your performance testing tasks:
-```bash
-npx mega-minds record-agent-complete "performance-testing-agent" "testing-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for performance-testing-agent
-```bash
-# Starting performance testing work
-npx mega-minds record-agent-start "performance-testing-agent" "Load testing SaaS application for 10,000 concurrent users with Core Web Vitals analysis"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 75%
-npx mega-minds update-agent-status "performance-testing-agent" "Completed load tests and bottleneck analysis, now generating optimization recommendations" "75"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to backend-development-agent
-npx mega-minds record-handoff "performance-testing-agent" "backend-development-agent" "Optimize database queries and implement caching based on performance test findings"
+### Your Focus: Excellence in Your Domain
 
-# Completing performance testing work
-npx mega-minds record-agent-complete "performance-testing-agent" "Delivered comprehensive performance analysis with load test results and optimization roadmap" "backend-development-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ### Handoff Acknowledgment:
 ```markdown

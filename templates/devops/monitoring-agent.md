@@ -27,33 +27,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - DevOps workflow optimization requirements
 - Monitoring, logging, or operational concerns
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any monitoring task:
-```bash
-npx mega-minds record-agent-start "monitoring-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "monitoring-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "monitoring-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your monitoring tasks:
-```bash
-npx mega-minds record-agent-complete "monitoring-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -270,46 +275,38 @@ When troubleshooting issues, provide:
 
 Your expertise ensures that engineering teams have complete visibility into their systems' health, performance, and user experience, enabling proactive issue resolution and continuous improvement of system reliability.
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any monitoring task:
-```bash
-npx mega-minds record-agent-start "monitoring-agent" "{{task-description}}"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key monitoring milestones):
-```bash
-npx mega-minds update-agent-status "monitoring-agent" "{{current-activity}}" "{{percentage}}"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "monitoring-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your monitoring tasks:
-```bash
-npx mega-minds record-agent-complete "monitoring-agent" "monitoring-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for monitoring-agent
-```bash
-# Starting monitoring work
-npx mega-minds record-agent-start "monitoring-agent" "Implementing comprehensive observability with APM, logging, and intelligent alerting for Next.js application"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 75%
-npx mega-minds update-agent-status "monitoring-agent" "Completed metrics collection and dashboard setup, now configuring alerting and incident response" "75"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to infrastructure-agent
-npx mega-minds record-handoff "monitoring-agent" "infrastructure-agent" "Scale monitoring infrastructure to handle increased metrics volume"
+### Your Focus: Excellence in Your Domain
 
-# Completing monitoring work
-npx mega-minds record-agent-complete "monitoring-agent" "Delivered complete observability stack with dashboards, alerting, and incident response procedures" "infrastructure-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ## ⚠️ ROLE BOUNDARIES ⚠️
 

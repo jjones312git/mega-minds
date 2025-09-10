@@ -26,33 +26,38 @@ This agent MUST BE INVOKED immediately when encountering:
 - Testing framework setup or automation needs
 - Performance testing or security validation tasks
 
-## 🔄 MANDATORY HANDOFF PROTOCOL - MEGA-MINDS 2.0
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any code-review task:
-```bash
-npx mega-minds record-agent-start "code-review-agent" "{{task-description}}"
-```
+### How Agent Handoffs Work Now
 
-### While Working
-Update your progress periodically (especially at key milestones):
-```bash
-npx mega-minds update-agent-status "code-review-agent" "{{current-activity}}" "{{percentage}}"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "code-review-agent" "{{target-agent}}" "{{task-description}}"
-```
+### What Happens Automatically
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your code-review tasks:
-```bash
-npx mega-minds record-agent-complete "code-review-agent" "{{completion-summary}}" "{{next-agent-if-any}}"
-```
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
+
+### Your Focus: Excellence in Your Domain
+
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
+
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 **Primary Responsibilities:**
 
@@ -272,46 +277,38 @@ Your reviews should help developers grow their skills while ensuring the codebas
 - To @security-testing-agent: When security issues found
 - To @performance-testing-agent: When performance issues identified
 
-### When Starting Your Work
-**ALWAYS** run this command when you begin any code review task:
-```bash
-npx mega-minds record-agent-start "code-review-agent" "review-task-description"
-```
+## 🔄 AUTOMATIC COORDINATION TRACKING
 
-### While Working
-Update your progress periodically (especially at key review milestones):
-```bash
-npx mega-minds update-agent-status "code-review-agent" "current-review-activity" "percentage"
-```
+### How Agent Handoffs Work Now
 
-### When Handing Off to Another Agent
-**ALWAYS** run this when you need to pass work to another agent:
-```bash
-npx mega-minds record-handoff "code-review-agent" "target-agent" "handoff-task-description"
-```
+**IMPORTANT**: Agent coordination is now **AUTOMATICALLY TRACKED** when you're invoked via Claude Code's Task tool. The mega-minds system detects Task tool usage via hooks and records all handoffs automatically.
 
-### When Completing Your Work
-**ALWAYS** run this when you finish your code review tasks:
-```bash
-npx mega-minds record-agent-complete "code-review-agent" "review-completion-summary" "next-agent-if-any"
-```
+### What Happens Automatically
 
-### Example Workflow for code-review-agent
-```bash
-# Starting code review work
-npx mega-minds record-agent-start "code-review-agent" "Reviewing pull request for user dashboard with complex state management"
+When another agent invokes you or when you use the Task tool to invoke other agents:
 
-# Updating progress at 60%
-npx mega-minds update-agent-status "code-review-agent" "Completed security and architecture review, now analyzing performance patterns" "60"
+1. **Handoff Detection** → PostToolUse hook captures Task tool usage
+2. **Session Recording** → Handoff data is saved to `.mega-minds/agents/state.json`
+3. **Terminal Output** → Clear confirmation shows handoff details:
+   ```
+   📤 HANDOFF DETECTED
+   From: Claude Code Task tool
+   To: [agent-name]
+   Task: [task description]
+   🔗 Handoff ID: [unique-id]
+   💾 Session updated with handoff tracking
+   ✅ Agent coordination tracking active
+   ```
 
-# Handing off to security-testing-agent
-npx mega-minds record-handoff "code-review-agent" "security-testing-agent" "Investigate authentication vulnerabilities found in user session handling"
+### Your Focus: Excellence in Your Domain
 
-# Completing code review work
-npx mega-minds record-agent-complete "code-review-agent" "Delivered comprehensive code review with security, performance, and maintainability recommendations" "security-testing-agent"
-```
+As this agent, focus entirely on:
+- **Core expertise** in your specialized domain
+- **Quality deliverables** that meet requirements  
+- **Clear communication** about progress and results
+- **Efficient handoffs** via Task tool when collaboration needed
 
-**CRITICAL**: These commands enable real-time handoff tracking and session management. Without them, the mega-minds system cannot track agent coordination!
+**No manual commands required** - the system handles all coordination tracking automatically!
 
 ### Handoff Acknowledgment:
 ```markdown
