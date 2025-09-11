@@ -7,9 +7,9 @@ Mega-minds transforms Claude Code into a complete AI development team with speci
 ## Core Concepts
 
 ### 🤖 AI Development Team
-- **7 specialized agents** covering all development needs
-- **Intelligent agent selection** automatically chooses the best agent for each task
-- **Automatic coordination** between agents with handoff tracking
+- **33 specialized agents** covering all development needs
+- **Intelligent agent selection** automatically chooses the best agent for core tasks
+- **Automatic coordination** between agents with handoff tracking  
 - **Quality gates** ensure high-quality output at every stage
 - **Memory management** prevents crashes and preserves context
 
@@ -193,7 +193,11 @@ npx mega-minds logging level warning
 
 ## Agent Specializations
 
-Mega-Minds includes 7 core specialized agents that are automatically selected by the intelligence system:
+Mega-Minds includes **33 specialized agents** organized into development teams. The intelligence system currently provides automatic selection for **7 core agent types**, with all 33 agents available for direct usage via the Task tool.
+
+### 🧠 Intelligence System Core Agents (Auto-Selected)
+
+The following 7 agents are automatically selected by the intelligence system:
 
 ### 🎯 Project Orchestrator Agent
 - **Primary Role**: Project coordination and management
@@ -236,6 +240,28 @@ Mega-Minds includes 7 core specialized agents that are automatically selected by
 - **Expertise**: Security analysis, vulnerability scanning, access control
 - **Keywords**: security, vulnerability, authentication, authorization, encryption, secure
 - **Best For**: Security implementation and security audits
+
+### 🎯 All 33 Available Agents
+
+**Planning & Strategy**: project-orchestrator, technical-architecture, market-research, risk-assessment, requirements-analysis
+
+**Development**: frontend-development, backend-development, authentication, database  
+
+**Design & Prototyping**: ux-ui-design, api-design, database-schema, security-architecture
+
+**Quality Assurance**: testing, code-review, performance-testing, security-testing
+
+**DevOps & Infrastructure**: ci-cd-pipeline, infrastructure, monitoring, backup-recovery
+
+**Business Operations**: analytics, customer-support, marketing-automation
+
+**SaaS Features**: multi-tenancy, subscription-management, onboarding, usage-tracking
+
+**Maintenance & Optimization**: ab-tester, bug-tracker, feature-manager, performance-optimizer
+
+**Generic**: generic-agent
+
+**Usage**: All agents can be used directly via Task tool (e.g., `@api-design-agent`, `@subscription-management-agent`). The intelligence system automatically selects from the 7 core agents, while specialized agents are available for specific needs.
 
 ## Best Practices
 

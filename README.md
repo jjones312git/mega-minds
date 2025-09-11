@@ -2,7 +2,7 @@
 
 **Turn Claude Code into your personal AI development team!**
 
-Mega-Minds gives you an intelligent AI development workflow system that coordinates specialized agents to build any software project. Just tell Claude Code what you want to build, and the system will intelligently select and coordinate the right agents for the job.
+Mega-Minds gives you **33+ specialized AI agents** that work together to build any software project. The system includes intelligent agent selection for core development tasks, plus specialized agents for every aspect of modern software development.
 
 ## What Does It Do? 🚀
 
@@ -38,19 +38,58 @@ The AI team will take care of everything else! 🎉
 
 ## What AI Agents Are Available? 🤖
 
-Mega-Minds includes an intelligent agent selection system with 7 specialized agents:
+Mega-Minds includes **33 specialized agents** organized into development teams:
 
-### Core Development Agents
-- **🎯 Project Orchestrator Agent** - Coordinates project phases, manages workflow, and oversees team coordination
-- **💻 Frontend Development Agent** - Builds user interfaces with React, Vue, Angular, and responsive design
-- **⚙️ Backend Development Agent** - Creates server-side logic, APIs, database integrations, and backend services
-- **🧪 Testing Agent** - Implements comprehensive testing strategies, quality assurance, and validation
-- **📊 Monitoring Agent** - Sets up production monitoring, logging, and observability systems
-- **🚀 DevOps Agent** - Handles deployment, CI/CD pipelines, infrastructure, and automation
-- **🛡️ Security Agent** - Ensures application security, performs audits, and implements security measures
+### 📋 Planning & Strategy (5 agents)
+- **🎯 Project Orchestrator** - Coordinates entire development process and manages workflows
+- **🏗️ Technical Architecture** - System design and technology decisions  
+- **📊 Market Research** - Competitive analysis and validation
+- **⚠️ Risk Assessment** - Identifies and mitigates project risks
+- **📝 Requirements Analysis** - Gathers and analyzes project requirements
+
+### 💻 Development Team (4 agents)
+- **🖥️ Frontend Development** - React, Vue, Angular, and user interface development
+- **⚙️ Backend Development** - Server logic, APIs, and backend services
+- **🔐 Authentication** - User authentication and authorization systems
+- **🗄️ Database** - Database operations and data management
+
+### 🎨 Design & Prototyping (4 agents)
+- **🎨 UX/UI Design** - User experience and interface design
+- **📡 API Design** - API specifications and documentation
+- **🗃️ Database Schema** - Database design and optimization
+- **🛡️ Security Architecture** - Security planning and compliance
+
+### 🧪 Quality Assurance (4 agents)
+- **🔬 Testing** - Comprehensive testing strategies and automation
+- **📖 Code Review** - Code quality and standards enforcement
+- **⚡ Performance Testing** - Load testing and optimization
+- **🔒 Security Testing** - Security scanning and vulnerability audits
+
+### 🚀 DevOps & Infrastructure (4 agents)
+- **🔄 CI/CD Pipeline** - Automated deployment workflows
+- **🏗️ Infrastructure** - Cloud infrastructure and scaling
+- **📊 Monitoring** - System monitoring and alerting
+- **💾 Backup Recovery** - Backup strategies and disaster recovery
+
+### 💼 Business Operations (3 agents)
+- **📈 Analytics** - User analytics and business intelligence
+- **🎧 Customer Support** - Support system development
+- **📧 Marketing Automation** - Email campaigns and marketing tools
+
+### 🏢 SaaS Features (4 agents)
+- **🏢 Multi-Tenancy** - Multi-tenant architecture
+- **💳 Subscription Management** - Billing and subscription systems
+- **🚪 Onboarding** - User onboarding flows and experiences
+- **📊 Usage Tracking** - Usage analytics and monitoring
+
+### 🔧 Maintenance & Optimization (4 agents)
+- **🔬 A/B Tester** - Feature testing and optimization
+- **🐛 Bug Tracker** - Issue tracking and resolution
+- **✨ Feature Manager** - Feature development and rollout
+- **⚡ Performance Optimizer** - Performance analysis and optimization
 
 ### 🧠 Intelligent Agent Selection
-The system automatically analyzes your requests and selects the most appropriate agents based on:
+The system includes an intelligent selection engine that automatically chooses the best agents for your requests:
 - **Keyword matching** - Recognizes development patterns and terminology
 - **Capability alignment** - Matches tasks to agent expertise areas
 - **Project context** - Considers your project type and previous work
