@@ -1,0 +1,147 @@
+{
+  "categories": {
+    "planning": {
+      "name": "Planning & Strategy",
+      "priority": 1,
+      "weight": 1.3,
+      "description": "High-level planning, coordination, and strategic decision-making",
+      "conflictsWith": [],
+      "keywords": ["plan", "coordinate", "orchestrate", "manage", "strategy", "requirements"],
+      "agents": [
+        "project-orchestrator-agent",
+        "technical-architecture-agent", 
+        "market-research-agent",
+        "risk-assessment-agent",
+        "requirements-analysis-agent"
+      ]
+    },
+    "development": {
+      "name": "Core Development",
+      "priority": 2,
+      "weight": 1.2,
+      "description": "Primary application development and implementation",
+      "conflictsWith": [],
+      "keywords": ["develop", "build", "implement", "code", "create", "frontend", "backend"],
+      "agents": [
+        "frontend-development-agent",
+        "backend-development-agent",
+        "authentication-agent",
+        "database-agent"
+      ]
+    },
+    "prototyping": {
+      "name": "Design & Prototyping", 
+      "priority": 2,
+      "weight": 1.1,
+      "description": "Design, prototyping, and architectural specifications",
+      "conflictsWith": [],
+      "keywords": ["design", "prototype", "architecture", "schema", "ui", "ux", "api"],
+      "agents": [
+        "ux-ui-design-agent",
+        "api-design-agent",
+        "database-schema-agent",
+        "security-architecture-agent"
+      ]
+    },
+    "qa": {
+      "name": "Quality Assurance",
+      "priority": 3,
+      "weight": 1.0,
+      "description": "Testing, quality control, and code review",
+      "conflictsWith": [],
+      "keywords": ["test", "quality", "review", "validate", "verify", "qa", "security"],
+      "agents": [
+        "testing-agent",
+        "code-review-agent", 
+        "performance-testing-agent",
+        "security-testing-agent"
+      ]
+    },
+    "devops": {
+      "name": "DevOps & Infrastructure",
+      "priority": 4,
+      "weight": 0.9,
+      "description": "Deployment, infrastructure, and operational concerns",
+      "conflictsWith": [],
+      "keywords": ["deploy", "infrastructure", "ci", "cd", "monitoring", "docker", "kubernetes"],
+      "agents": [
+        "ci-cd-pipeline-agent",
+        "infrastructure-agent",
+        "monitoring-agent", 
+        "backup-recovery-agent"
+      ]
+    },
+    "businessops": {
+      "name": "Business Operations",
+      "priority": 4,
+      "weight": 0.8,
+      "description": "Business logic, analytics, and operational features",
+      "conflictsWith": [],
+      "keywords": ["analytics", "support", "marketing", "business", "customer", "metrics"],
+      "agents": [
+        "analytics-agent",
+        "customer-support-agent",
+        "marketing-automation-agent"
+      ]
+    },
+    "saas": {
+      "name": "SaaS Features",
+      "priority": 3,
+      "weight": 0.9,
+      "description": "Multi-tenancy, subscriptions, and SaaS-specific functionality",
+      "conflictsWith": [],
+      "keywords": ["saas", "multi-tenant", "subscription", "billing", "onboarding", "usage"],
+      "agents": [
+        "multi-tenancy-agent",
+        "subscription-management-agent",
+        "onboarding-agent",
+        "usage-tracking-agent"
+      ]
+    },
+    "maintenance": {
+      "name": "Maintenance & Optimization",
+      "priority": 5,
+      "weight": 0.7,
+      "description": "Ongoing maintenance, optimization, and feature management",
+      "conflictsWith": [],
+      "keywords": ["optimize", "maintain", "feature", "ab-test", "bug", "performance"],
+      "agents": [
+        "ab-tester-agent",
+        "bug-tracker-agent",
+        "feature-manager-agent",
+        "performance-optimizer-agent"
+      ]
+    }
+  },
+  "conflictRules": {
+    "frontend-backend": {
+      "description": "Frontend and backend agents should not handle each other's concerns",
+      "rule": "frontend-development-agent conflicts with backend-development-agent for overlapping tasks"
+    },
+    "testing-monitoring": {
+      "description": "Testing focuses on development QA, monitoring on production observability",
+      "rule": "testing-agent and monitoring-agent have different scopes but can complement each other"
+    },
+    "design-development": {
+      "description": "Design should precede implementation",
+      "rule": "prototyping category agents should typically be selected before development category"
+    }
+  },
+  "selectionRules": {
+    "orchestratorFirst": {
+      "description": "Orchestrator should be considered for complex multi-step projects",
+      "condition": "request contains multiple development phases or coordination needs"
+    },
+    "categoryProgression": {
+      "description": "Typical workflow progresses from planning -> design -> development -> qa -> devops",
+      "priority": [1, 2, 2, 3, 4]
+    },
+    "specialistBonus": {
+      "description": "Highly specific requests should prefer specialist agents",
+      "multiplier": 1.5
+    }
+  },
+  "version": "2.1.1",
+  "lastUpdated": "2025-09-11",
+  "totalAgents": 33
+}
