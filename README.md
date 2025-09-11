@@ -2,7 +2,7 @@
 
 **Turn Claude Code into your personal AI development team!**
 
-Mega-Minds gives you 31+ specialized AI coding assistants that work together to build any software project. Just tell them what you want to build, and they'll handle everything from planning to deployment.
+Mega-Minds gives you an intelligent AI development workflow system that coordinates specialized agents to build any software project. Just tell Claude Code what you want to build, and the system will intelligently select and coordinate the right agents for the job.
 
 ## What Does It Do? 🚀
 
@@ -36,40 +36,27 @@ Just tell Claude Code what you want to build:
 
 The AI team will take care of everything else! 🎉
 
-## What AI Assistants Do You Get? 🤖
+## What AI Agents Are Available? 🤖
 
-### Planning Team
-- **Project Orchestrator** - The team leader who coordinates everyone
-- **Requirements Analyst** - Figures out exactly what you need
-- **Risk Assessor** - Spots potential problems early
+Mega-Minds includes an intelligent agent selection system with 7 specialized agents:
 
-### Design Team  
-- **UI/UX Designer** - Makes your app look amazing
-- **Database Designer** - Organizes your data perfectly
-- **Security Architect** - Keeps your app safe from hackers
+### Core Development Agents
+- **🎯 Project Orchestrator Agent** - Coordinates project phases, manages workflow, and oversees team coordination
+- **💻 Frontend Development Agent** - Builds user interfaces with React, Vue, Angular, and responsive design
+- **⚙️ Backend Development Agent** - Creates server-side logic, APIs, database integrations, and backend services
+- **🧪 Testing Agent** - Implements comprehensive testing strategies, quality assurance, and validation
+- **📊 Monitoring Agent** - Sets up production monitoring, logging, and observability systems
+- **🚀 DevOps Agent** - Handles deployment, CI/CD pipelines, infrastructure, and automation
+- **🛡️ Security Agent** - Ensures application security, performs audits, and implements security measures
 
-### Coding Team
-- **Frontend Developer** - Builds the part users see
-- **Backend Developer** - Builds the server and logic
-- **Database Expert** - Sets up databases and queries
-- **Authentication Expert** - Handles user login/signup
+### 🧠 Intelligent Agent Selection
+The system automatically analyzes your requests and selects the most appropriate agents based on:
+- **Keyword matching** - Recognizes development patterns and terminology
+- **Capability alignment** - Matches tasks to agent expertise areas
+- **Project context** - Considers your project type and previous work
+- **Learning from feedback** - Improves selection accuracy over time
 
-### Testing Team
-- **Quality Assurance Tester** - Tests everything thoroughly  
-- **Code Reviewer** - Checks all code for mistakes
-- **Performance Tester** - Makes sure your app is fast
-- **Security Tester** - Finds security vulnerabilities
-
-### DevOps Team
-- **CI/CD Pipeline Expert** - Sets up automatic deployments
-- **Infrastructure Expert** - Manages servers and hosting
-- **Monitoring Expert** - Watches your app in production
-- **Backup Expert** - Protects your data
-
-### Business Team
-- **Analytics Expert** - Tracks user behavior and metrics
-- **Customer Support** - Helps with support features
-- **Marketing Automation** - Sets up email and marketing tools
+**Goal: 90%+ agent selection accuracy with <2 second response time**
 
 ## Smart Features ✨
 
@@ -155,83 +142,60 @@ npx mega-minds init
 # Check what AI assistants are working on
 npx mega-minds agent-status
 
-# See your project's tech stack info
-npx mega-minds variable-status
-
 # Check memory and performance
 npx mega-minds memory-status
+
+# Clean up memory if needed
+npx mega-minds memory-cleanup
+
+# Save current development session
+npx mega-minds save-session "description"
+
+# Compress context for optimization
+npx mega-minds compress-context
 ```
 
-### ⚡ NEW: Claude Code Integration Features
-
-#### Quick Slash Commands (Use directly in Claude Code)
-
-**Agent Activation (All 31+ agents available as slash commands):**
+### Quality & Intelligence Commands
 ```bash
-# Planning Team
-/orchestrator         # Project coordination and management  
-/requirements        # Requirements analysis and planning
-/technical-arch      # System architecture design
-/risk-assessment     # Risk analysis and mitigation
+# Run automated quality gates
+npx mega-minds run-quality-gates
 
-# Development Team  
-/frontend            # Frontend/UI development
-/backend             # Backend/API development
-/database            # Database design and optimization
-/authentication      # User authentication systems
+# Check quality metrics
+npx mega-minds quality-status
 
-# Quality Assurance
-/testing             # Comprehensive testing and QA
-/code-review         # Code quality and standards review
-/security-testing    # Security analysis and testing
-/performance-testing # Performance optimization
+# Record feedback on agent performance (helps improve selection accuracy)
+npx mega-minds record-feedback
 
-# DevOps & Infrastructure
-/ci-cd              # CI/CD pipeline setup
-/infrastructure     # Cloud infrastructure management
-/monitoring         # System monitoring and logging
-/backup-recovery    # Data backup and recovery
-
-# Business Operations
-/analytics          # User analytics and BI
-/customer-support   # Support system development
-/marketing-automation # Marketing campaigns
-
-# SaaS Features
-/multi-tenancy      # Multi-tenant architecture
-/subscription       # Billing and subscription management
-/onboarding         # User onboarding flows
-
-# Utility Commands
-/mega-status        # Show system status
-/handoff           # Secure agent handoff  
-/memory-check      # Memory health check
+# View agent selection metrics
+npx mega-minds selection-metrics
 ```
 
-*And many more! All agents automatically get slash commands.*
+### ⚡ Key Features
 
-#### Real-Time Statusline
-Automatically displays at bottom of Claude Code:
-- 🤖 Active agents count
-- 💾 Memory usage and pressure
-- 🔄 Handoff queue status
-- ⚡ Performance metrics
-- 🛡️ Security status
+#### 🧠 **Intelligent Agent Selection**
+Mega-Minds automatically selects the best agent for each task:
+- Analyzes your request using advanced algorithms
+- Considers project context and history
+- Learns from feedback to improve accuracy
+- Provides reasoning for agent recommendations
 
-#### Auto-Generated Settings
-- ✅ Optimal Claude Code settings per project
-- ✅ Security-first tool permissions
-- ✅ Project-specific configurations
-- ✅ Performance optimizations
+#### 🔄 **Seamless Handoff Management** 
+- Agents coordinate automatically through the handoff system
+- Track work progress and agent activity in real-time
+- Quality gates ensure high-quality output at each stage
+- Comprehensive session management and memory handling
 
-### Save Your Progress
-```bash
-# Save your current work
-npx mega-minds save-session "finished user login"
+#### 💾 **Memory Management**
+- Automatic session saving and restoration
+- Context compression to prevent memory issues
+- Intelligent cleanup of unused data
+- Session history for project continuity
 
-# Load previous work
-npx mega-minds load-session
-```
+#### 🛡️ **Quality Gates**
+- Automated quality checks at each development stage
+- Code review and security scanning
+- Performance validation and optimization
+- Comprehensive testing strategies
 
 ## Troubleshooting 🔧
 

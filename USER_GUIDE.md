@@ -7,17 +7,18 @@ Mega-minds transforms Claude Code into a complete AI development team with speci
 ## Core Concepts
 
 ### 🤖 AI Development Team
-- **26 specialized agents** covering all development needs
+- **7 specialized agents** covering all development needs
+- **Intelligent agent selection** automatically chooses the best agent for each task
 - **Automatic coordination** between agents with handoff tracking
 - **Quality gates** ensure high-quality output at every stage
 - **Memory management** prevents crashes and preserves context
 
 ### 🔄 How It Works
 1. **You make a request** in Claude Code
-2. **Orchestrator agent** plans the work and assigns specialists
-3. **Specialist agents** execute tasks with expert knowledge
+2. **Intelligence system** analyzes the request and selects appropriate agents
+3. **Selected agents** execute tasks with specialized knowledge
 4. **Quality gates** validate all work before proceeding
-5. **Results delivered** with complete documentation
+5. **Results delivered** with complete documentation and learning feedback
 
 ## Basic Usage
 
@@ -192,36 +193,49 @@ npx mega-minds logging level warning
 
 ## Agent Specializations
 
-### Planning & Strategy
-- **@project-orchestrator-agent**: Coordinates entire development process
-- **@requirements-analysis-agent**: Gathers and analyzes requirements
-- **@market-research-agent**: Competitive analysis and validation
-- **@risk-assessment-agent**: Identifies and mitigates risks
+Mega-Minds includes 7 core specialized agents that are automatically selected by the intelligence system:
 
-### Design & Architecture
-- **@technical-architecture-agent**: System design and technology decisions
-- **@ux-ui-design-agent**: User interface and experience design
-- **@database-schema-agent**: Database design and optimization
-- **@api-design-agent**: API specifications and documentation
-- **@security-architecture-agent**: Security planning and compliance
+### 🎯 Project Orchestrator Agent
+- **Primary Role**: Project coordination and management
+- **Expertise**: Planning, strategy, workflow design, team coordination
+- **Keywords**: project, coordinate, manage, plan, organize, workflow, oversee, lead
+- **Best For**: Overall project management and strategic planning
 
-### Development
-- **@frontend-development-agent**: React, Vue, Angular development
-- **@backend-development-agent**: Server logic and API implementation
-- **@database-agent**: Database operations and management
-- **@authentication-agent**: User authentication and authorization
+### 💻 Frontend Development Agent  
+- **Primary Role**: User interface and experience development
+- **Expertise**: React, Vue, Angular, HTML, CSS, JavaScript, responsive design
+- **Keywords**: ui, frontend, react, vue, angular, component, responsive, interface
+- **Best For**: Building user-facing applications and interfaces
 
-### Quality Assurance
-- **@testing-agent**: Comprehensive testing strategies
-- **@code-review-agent**: Code quality and standards
-- **@performance-testing-agent**: Load testing and optimization
-- **@security-testing-agent**: Security scanning and audits
+### ⚙️ Backend Development Agent
+- **Primary Role**: Server-side logic and API development  
+- **Expertise**: Node.js, Python, Java, API design, database integration
+- **Keywords**: api, backend, server, database, endpoint, microservice, rest, graphql
+- **Best For**: Server logic, APIs, and backend architecture
 
-### DevOps & Operations
-- **@ci-cd-pipeline-agent**: Automated deployment workflows
-- **@infrastructure-agent**: Cloud infrastructure and scaling
-- **@monitoring-agent**: System monitoring and alerting
-- **@backup-recovery-agent**: Backup strategies and disaster recovery
+### 🧪 Testing Agent
+- **Primary Role**: Quality assurance and testing
+- **Expertise**: Unit testing, integration testing, E2E testing, quality assurance
+- **Keywords**: test, testing, unit, integration, e2e, qa, quality, verify, validate
+- **Best For**: Comprehensive testing strategies and quality validation
+
+### 📊 Monitoring Agent
+- **Primary Role**: Production monitoring and observability
+- **Expertise**: Logging, metrics, alerting, performance tracking, analytics
+- **Keywords**: monitor, logging, metrics, alert, performance, observability
+- **Best For**: System health monitoring and production observability
+
+### 🚀 DevOps Agent
+- **Primary Role**: Deployment and infrastructure automation
+- **Expertise**: CI/CD, containerization, infrastructure management, deployment
+- **Keywords**: deploy, deployment, ci, cd, docker, kubernetes, infrastructure, pipeline
+- **Best For**: Deployment automation and infrastructure management
+
+### 🛡️ Security Agent
+- **Primary Role**: Application security and security auditing
+- **Expertise**: Security analysis, vulnerability scanning, access control
+- **Keywords**: security, vulnerability, authentication, authorization, encryption, secure
+- **Best For**: Security implementation and security audits
 
 ## Best Practices
 

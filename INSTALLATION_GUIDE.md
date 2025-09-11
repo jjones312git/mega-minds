@@ -70,6 +70,7 @@ your-project/
 │   ├── workflows/       # Communication protocols & quality gates
 │   └── claude.md        # Main AI team configuration
 ├── .mega-minds/         # AI team state and memory (created during use)
+│   ├── intelligence/    # Agent selection feedback and metrics
 │   ├── memory/          # Session and context storage
 │   ├── state/           # Real-time agent coordination
 │   ├── sessions/        # Development session history
@@ -83,6 +84,7 @@ your-project/
 ### Basic Configuration (Automatic)
 The `npx mega-minds init` command automatically configures:
 - Agent templates and workflows
+- Intelligent agent selection system
 - Memory management settings
 - Quality gates and validation rules
 - Claude Code integration
