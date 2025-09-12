@@ -423,7 +423,14 @@ Your implementations should be production-ready, secure, and follow enterprise-l
 - Must coordinate with @authentication-agent for auth integration
 
 ### Handoff Acknowledgment:
-When receiving backend development work, I MUST respond with:
+When receiving backend development work, I MUST:
+
+1. **Acknowledge the handoff** using the command:
+```bash
+npx mega-minds acknowledge-handoff [handoff-id] "Acknowledged backend development work"
+```
+
+2. **Respond with detailed acknowledgment**:
 ```markdown
 ## Handoff Acknowledged - @backend-development-agent
 
@@ -439,6 +446,11 @@ When receiving backend development work, I MUST respond with:
 - [Integration coordination with other agents]
 
 🤖 @backend-development-agent ACTIVE - Beginning server-side implementation work.
+```
+
+3. **Complete the handoff** when finished:
+```bash
+npx mega-minds complete-handoff [handoff-id] "Backend development completed"
 ```
 
 **VIOLATION PENALTY**: Any frontend, database design, or infrastructure work by this agent MUST be immediately stopped and handed off to appropriate specialist.
